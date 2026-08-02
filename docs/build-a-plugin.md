@@ -337,29 +337,64 @@ no job, no progress. Each takes the same settings record actions get.
 p.AddMeta(sdkv1.Meta{
     Method: "my.meta.projects",
     RequestHandler: func(r sdkv1.Request) any {
-        in, err := sdkv1.CastRequestTo[struct {
+        in := decodeMeta[struct {
             Settings map[string]any `json:"settings"`
             Query    string         `json:"query"`
         }](r.Data)
-        if err != nil {
-            return sdkv1.Response{Error: err.Error()}
-        }
-        return listProjects(in.Body.Settings, in.Body.Query) // e.g. []Option
+        return listProjects(in.Settings, in.Query)
     },
 })
 ```
 
-A meta handler returns `any` and the SDK marshals it verbatim, so it can answer
-with a bare array — `[{value, label}]` for a picker — when that is what the caller
-expects. Call `AddMeta` **before** `Start()`.
+A meta handler returns `any` and the SDK marshals it verbatim — a struct, a map,
+or a bare array, whichever the caller expects. Call `AddMeta` **before** `Start()`.
+
+**Do not use `CastRequestTo` here.** It unmarshals the action envelope
+(`{"_registry":…, "body":{…}}`), but a meta call made from a form arrives **flat**
+— the fields are at the top level. You would get a zero-valued struct and an empty
+`Settings` map, with no error to tell you. Decode tolerantly instead; see
+[dependent-fields.md § What your meta function receives](dependent-fields.md#2-what-your-meta-function-receives)
+for the `decodeMeta` helper used above.
 
 Three that nearly every integration plugin wants:
 
 | Method | Purpose |
 |--------|---------|
 | `<domain>.meta.ping` | Connection test for the settings dialog. |
-| `<domain>.meta.<things>` | Populate a picker (projects, buckets, channels, tables). |
+| `<domain>.meta.<things>` | Resolve or list a dependency (projects, buckets, channels, tables). |
 | `<domain>.meta.<state>` | Options that depend on the record being acted on. |
+
+---
+
+## 8b. Wire a meta RPC into the form
+
+A meta RPC is only half of the feature. The other half is a **button on a
+control** that calls it and writes the answer back into the form — which is how a
+user picks a project they cannot type from memory, or turns a name into the
+`accountId` your API demands.
+
+```jsonc
+{
+  "type": "Control",
+  "scope": "#/properties/projectKey",
+  "x-inflow-ui": {
+    "action": { "name": "pluginFn", "fn": "my.meta.projects" },
+    "button": { "position": "append", "label": "Find" }
+  }
+}
+```
+
+The host sends the whole form plus the bound settings profile, and applies what
+comes back: an **object** is a patch of `field → value`, anything else is written
+to the button's own control. So the handler above must return
+`map[string]any{"projectKey": "OPS", …}` — **not** an `sdkv1.Response`, whose
+`{data, error}` envelope would be patched in as two fields called `data` and
+`error`.
+
+This is the mechanism behind every "identify the project first, then list what
+depends on it" form. It has real limits — no runtime `enum` injection, no
+on-change firing, no separate error channel — and they shape how you lay a form
+out, so read **[dependent-fields.md](dependent-fields.md)** before designing one.
 
 ---
 
@@ -438,6 +473,8 @@ inspector panel while a flow executes your node.
 - [ ] No credential appears in any action form, log line, or committed output.
 - [ ] Errors name the fix, not just the symptom.
 - [ ] Every action has a form with titles and `required` set.
+- [ ] Any field a user cannot type from memory has a meta RPC behind a button —
+      and is still typable by hand ([dependent-fields.md](dependent-fields.md)).
 - [ ] Clients are pooled per connection, not globally.
 - [ ] `Version` in `PluginIntro` matches the git tag.
 - [ ] README covers: what it does, the actions table, how the connection is
@@ -455,5 +492,6 @@ Then [publish it and get it listed](publishing.md).
 | How does the wire protocol actually work? | [protocol-inflowv1.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/protocol-inflowv1.md) |
 | What else can a Job do? | [jobs-and-commands.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/jobs-and-commands.md) |
 | How do I build a richer form? | [form-builder.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/form-builder.md) |
+| A field depends on another field, or on the account | [dependent-fields.md](dependent-fields.md) |
 | Show me a full worked example | [examples.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/examples.md) · [the Jira plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | Recipe-by-recipe walkthrough | [cookbook.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/cookbook.md) |

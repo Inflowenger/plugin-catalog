@@ -93,12 +93,21 @@ They look similar and behave nothing alike.
 | Signature | `func(sdkv1.Job)` | `func(sdkv1.Request) any` |
 
 Use a meta RPC for anything the drawer needs *before* a run: "test this
-connection", "list the projects on this site", "which transitions does this issue
-have right now". A meta handler can answer with a bare array when that is the
-shape the caller expects — it is not forced into the `{data, error}` envelope.
+connection", "resolve this project name to a key", "which transitions does this
+issue have right now". A meta handler can answer with a bare array when that is
+the shape the caller expects — it is not forced into the `{data, error}` envelope.
 
-An action's `FormBuilder.SubmitTo` names a meta method for **live validation** of
-the form the user is filling in.
+Two different things call a meta method, and they want different answers:
+
+- A **button on a form control** (`x-inflow-ui`) calls one to fill fields in. It
+  wants the **patch** — `{"projectKey": "OPS"}` — and receives a *flat* request
+  body, not the action envelope. This is how a form handles a field that depends
+  on the account or on another field; see
+  [dependent-fields.md](dependent-fields.md).
+- **`FormBuilder.SubmitTo`** names a meta method for **live validation** of the
+  form on submit. That one answers with an `sdkv1.Response`.
+
+Mixing the two up is the most common way a dependent field silently fails.
 
 ---
 
@@ -181,11 +190,18 @@ hand-writing JSON. A form is two strings:
 
 - **`Jsonschema`** — a JSON Schema describing the fields, types, and requirements.
 - **`Jsonui`** — a [JSON Forms](https://jsonforms.io) UI Schema describing layout,
-  plus Inflowenger's `x-inflow-ui` extensions for platform-specific widgets
-  (context pickers, profile-aware selects, and so on).
+  plus Inflowenger's `x-inflow-ui` extension, which adds behaviour a static form
+  has no vocabulary for: *put a button on this field, and call this plugin
+  function when it is clicked*.
 
 Both are plain strings on the wire, so you can keep them as Go string constants,
 embed `.json` files with `go:embed`, or generate them.
+
+A form is not limited to what you knew at compile time. `x-inflow-ui` plus a meta
+RPC is how a field gets values that only exist at configuration time — the
+projects *this* settings profile can see, the users assignable to *that* project,
+the transitions available on an issue right now. That pairing has its own
+contract and its own limits: **[dependent-fields.md](dependent-fields.md)**.
 
 Reference: [form-builder.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/form-builder.md).
 
@@ -208,5 +224,7 @@ branch reads.
 ## Next
 
 - [build-a-plugin.md](build-a-plugin.md) — do it.
+- [dependent-fields.md](dependent-fields.md) — forms whose fields depend on the
+  account, or on each other.
 - [sdks.md](sdks.md) — which language, and what a new SDK must implement.
 - [publishing.md](publishing.md) — versioning, deployment, and getting listed.

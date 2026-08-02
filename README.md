@@ -41,7 +41,9 @@ into over [NATS](https://nats.io). That makes it the platform's real extension
 point:
 
 - **Its own UI** — every action carries a form (JSON Schema + UI Schema) that the
-  drawer renders, so users configure your node visually.
+  drawer renders, so users configure your node visually. Fields can call back
+  into the plugin while the form is open, so a picker shows what *this* account
+  can actually see.
 - **Context access** — read and write the running flow's shared context by JSON
   path, mid-execution.
 - **Flow control** — stream progress, finish a job, route outbound ports, or stop
@@ -122,8 +124,9 @@ commands, meta RPCs, and testing without a live platform.
 |---|-----|-----|
 | 1 | [docs/concepts.md](docs/concepts.md) | What a plugin node is, and the six things it can do. Read once. |
 | 2 | [docs/build-a-plugin.md](docs/build-a-plugin.md) | Zero to a running plugin, in order. |
-| 3 | [docs/sdks.md](docs/sdks.md) | Which language you can write in today. |
-| 4 | [docs/publishing.md](docs/publishing.md) | Versioning, deploying, and getting listed. |
+| 3 | [docs/dependent-fields.md](docs/dependent-fields.md) | Forms whose fields depend on the connected account or on each other — lookups, cascades, connection tests. Read before you design your second form. |
+| 4 | [docs/sdks.md](docs/sdks.md) | Which language you can write in today. |
+| 5 | [docs/publishing.md](docs/publishing.md) | Versioning, deploying, and getting listed. |
 
 Then go deep in the SDK's own docs — they are the normative reference:
 [cookbook](https://github.com/Inflowenger/go-plugin-sdk/blob/main/cookbook.md) ·
