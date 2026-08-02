@@ -1,0 +1,99 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/Inflowenger/plugin-catalog/blob/main/plugins/index.schema.json",
+  "title": "Inflowenger plugin catalog index",
+  "type": "object",
+  "required": ["version", "plugins"],
+  "additionalProperties": false,
+  "properties": {
+    "$schema": { "type": "string" },
+    "version": {
+      "type": "integer",
+      "const": 1,
+      "description": "Schema version of this file, not of any plugin."
+    },
+    "plugins": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/plugin" }
+    }
+  },
+  "$defs": {
+    "plugin": {
+      "type": "object",
+      "required": ["slug", "name", "description", "repository", "entry", "author", "sdk", "categories", "status"],
+      "additionalProperties": false,
+      "properties": {
+        "slug": {
+          "type": "string",
+          "pattern": "^[a-z0-9]+(-[a-z0-9]+)*$",
+          "description": "Catalog identifier; matches the entry filename."
+        },
+        "name": { "type": "string", "description": "Human-readable name." },
+        "node": {
+          "type": "string",
+          "description": "The PluginIntro.Name shown on the canvas, e.g. JIRA."
+        },
+        "description": {
+          "type": "string",
+          "maxLength": 300,
+          "description": "One or two sentences, plain text."
+        },
+        "repository": {
+          "type": "string",
+          "format": "uri",
+          "description": "Public URL of the plugin's own repository."
+        },
+        "entry": {
+          "type": "string",
+          "description": "Path to the Markdown entry in this repo."
+        },
+        "author": {
+          "type": "string",
+          "description": "GitHub user or org that maintains the plugin."
+        },
+        "sdk": {
+          "type": "string",
+          "enum": ["go", "node", "python", "other"],
+          "description": "Which SDK the plugin is built with; 'other' for a hand-rolled inflowv1 implementation."
+        },
+        "protocol": {
+          "type": "string",
+          "enum": ["inflowv1"],
+          "description": "Wire protocol the plugin speaks."
+        },
+        "version": {
+          "type": "string",
+          "description": "Latest released version, e.g. v0.1.0."
+        },
+        "categories": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "string",
+            "enum": [
+              "issue-tracking",
+              "communication",
+              "storage",
+              "database",
+              "ai",
+              "devops",
+              "crm",
+              "protocol",
+              "utility"
+            ]
+          }
+        },
+        "actions": {
+          "type": "integer",
+          "minimum": 1,
+          "description": "How many actions the plugin exposes."
+        },
+        "status": {
+          "type": "string",
+          "enum": ["active", "experimental", "unmaintained"],
+          "description": "Maintenance state as reported by the author."
+        }
+      }
+    }
+  }
+}

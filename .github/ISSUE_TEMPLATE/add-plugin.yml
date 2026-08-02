@@ -1,0 +1,113 @@
+name: Add a plugin
+description: Submit an Inflowenger plugin for the catalog
+title: "Add <name> plugin"
+labels: ["listing"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Your plugin stays in your own repository — the catalog only links to it.
+
+        Prefer to open the PR yourself? Copy `templates/plugin-entry.md` to
+        `plugins/<slug>.md`, add the plugin to `plugins/index.json` and to both
+        README tables. See
+        [CONTRIBUTING.md](https://github.com/Inflowenger/plugin-catalog/blob/main/CONTRIBUTING.md).
+
+  - type: input
+    id: repository
+    attributes:
+      label: Repository
+      placeholder: https://github.com/you/thing-plugin
+    validations:
+      required: true
+
+  - type: input
+    id: name
+    attributes:
+      label: Plugin name
+      description: Human-readable, e.g. "Jira"
+    validations:
+      required: true
+
+  - type: input
+    id: node
+    attributes:
+      label: Node name
+      description: PluginIntro.Name — what shows on the canvas, e.g. JIRA
+    validations:
+      required: true
+
+  - type: textarea
+    id: description
+    attributes:
+      label: Description
+      description: One or two sentences of plain text.
+    validations:
+      required: true
+
+  - type: dropdown
+    id: sdk
+    attributes:
+      label: SDK
+      options:
+        - Go (go-plugin-sdk)
+        - Node.js
+        - Python
+        - Other / hand-rolled inflowv1
+    validations:
+      required: true
+
+  - type: dropdown
+    id: categories
+    attributes:
+      label: Categories
+      multiple: true
+      options:
+        - issue-tracking
+        - communication
+        - storage
+        - database
+        - ai
+        - devops
+        - crm
+        - protocol
+        - utility
+    validations:
+      required: true
+
+  - type: input
+    id: version
+    attributes:
+      label: Released version
+      description: The git tag, which must match PluginIntro.Version.
+      placeholder: v0.1.0
+    validations:
+      required: true
+
+  - type: dropdown
+    id: status
+    attributes:
+      label: Status
+      options:
+        - active
+        - experimental
+        - unmaintained
+    validations:
+      required: true
+
+  - type: checkboxes
+    id: bar
+    attributes:
+      label: Listing bar
+      description: See [CONTRIBUTING.md § The bar](https://github.com/Inflowenger/plugin-catalog/blob/main/CONTRIBUTING.md#the-bar).
+      options:
+        - label: It runs against a real Infra + Fractal, not just compiles.
+          required: true
+        - label: The repository is public and has a LICENSE file.
+          required: true
+        - label: The README says what it does, how to run it, and how the connection is supplied.
+          required: true
+        - label: There is a tagged release matching PluginIntro.Version.
+          required: true
+        - label: No credentials in action forms, logs, or committed output — connections come from settings profiles.
+          required: true

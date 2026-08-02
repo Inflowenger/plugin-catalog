@@ -1,0 +1,21 @@
+{
+  "$schema": "./index.schema.json",
+  "version": 1,
+  "plugins": [
+    {
+      "slug": "jira",
+      "name": "Jira",
+      "node": "JIRA",
+      "description": "Everyday Jira REST operations — create, search, transition, comment, link, log work, attach — against Jira Cloud and Server/Data Center.",
+      "repository": "https://github.com/mehdi-shokohi/jira-plugin",
+      "entry": "plugins/jira.md",
+      "author": "mehdi-shokohi",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["issue-tracking", "devops"],
+      "actions": 14,
+      "status": "active"
+    }
+  ]
+}
