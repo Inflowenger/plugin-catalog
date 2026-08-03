@@ -300,6 +300,47 @@ difference between "the button does nothing" and "no assignable user matches
 
 ---
 
+## Generating it with formkit
+
+Everything above is the wire contract — the `x-inflow-ui` markup you hang on a
+control and the patch shape your handler returns. The SDK's optional
+[`formkit`](https://github.com/Inflowenger/go-plugin-sdk/tree/main/formkit)
+package writes both, so the button's `fn`, `target`, and merged `body` cannot
+drift from the field they point at.
+
+**The button (Pattern A markup).** `.Lookup` names the meta function, `.Into`
+sets the `target` it writes to, and `.Picks` names the action whose form is
+rebuilt for the multi-match case:
+
+```go
+formkit.Text("assigneeQuery", "Assignee").
+    Lookup("jira.meta.users.resolve", "Find user"). // the button
+    Into("assignee")                                 // action.target
+```
+
+**The reply.** The same package carries the two answer shapes and the message
+vocabulary, and both work against raw schema strings too — including forms you
+hand-wrote:
+
+```go
+// One match — patch the field(s) and say what was found.
+return formkit.Success("%s (%s)", u.DisplayName, u.Email).
+    Patch(map[string]any{"assignee": u.AccountID})
+
+// Several — re-render the dialog with that field as a drop-down.
+return formkit.Choose(action.Form, "assignee", options, formkit.FormData(call),
+    formkit.Info("%d users match — pick one.", len(options)))
+```
+
+`Patch` returns the plain patch object this doc requires — never `sdkv1.Response`.
+`FormData` strips the host-added keys (`settings`, `value`, `targetField`,
+`form`) before the form is echoed back, so credentials in `settings` are never
+promoted into saved node data. `Choose` falls back to listing the candidates as
+text when the form cannot be rebuilt. Full API in
+[form-builder.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/form-builder.md).
+
+---
+
 ## Design rules
 
 **Never make the button the only way to fill the field.** Flows are templated and

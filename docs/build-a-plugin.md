@@ -256,6 +256,37 @@ files, or generated, whichever you prefer. Layout, widgets, and the
 `x-inflow-ui` extensions are documented in
 [form-builder.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/form-builder.md).
 
+### Or generate both from one declaration
+
+Hand-written, the two documents drift: rename a property in the schema and forget
+the scope in the UI, and the field silently stops rendering. The SDK's optional
+[`formkit`](https://github.com/Inflowenger/go-plugin-sdk/tree/main/formkit)
+package removes that class of bug by generating the schema *and* the UI schema
+from one declaration per field, in the order written:
+
+```go
+import "github.com/Inflowenger/go-plugin-sdk/formkit"
+
+form := formkit.New("Create Thing").Add(
+    formkit.Text("projectKey", "Project").Required(),
+    formkit.Text("summary", "Summary").Required(),
+    formkit.List("labels", "Labels"),
+).Build() // → sdkv1.FormBuilder
+
+p.AddAction(sdkv1.Action{
+    Method:         "my.thing.create",
+    Title:          "Create Thing",
+    Form:           form,
+    RequestHandler: handleCreate,
+})
+```
+
+It is adopt-per-form — nothing in `sdkv1` depends on it, its output is ordinary
+JSON Schema + UI Schema text, and you can build one form with it and hand-write
+the next. The same package also generates the dependent-field buttons and the
+replies to them ([dependent-fields.md](dependent-fields.md#generating-it-with-formkit)).
+Full API in [form-builder.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/form-builder.md).
+
 **Never put connection fields in an action form.** No API tokens, no base URLs.
 Those belong to the settings profile (next section) and arrive as
 `body.settings`. Worth an actual unit test — walk every action's schema and
