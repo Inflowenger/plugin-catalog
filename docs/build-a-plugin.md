@@ -442,7 +442,6 @@ mine  := job.CmdGetScope("$this.id")   // relative to this run's own location
 job.CmdSetOnPath(`$["result"]`, map[string]any{"count": 42})
 
 job.CmdNextFilter([]string{"approved"}) // follow only ports tagged "approved"
-// job.CmdStopFlow()                    // abort the whole run
 ```
 
 Use `Done` for your node's own output; use `CmdSetOnPath` to write somewhere else

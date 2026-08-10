@@ -173,11 +173,22 @@ Inside an action handler you hold a `Job`. It is not just a way to return a valu
 | `job.CmdSetOnPath(path, m)` | Write into the flow context at a JSON path (`$this…` allowed). |
 | `job.CmdNextFilter(tags)` | Route at runtime — follow only the outbound ports carrying these tags. |
 | `job.CmdSvcCall(action, data, op)` | Ask the extrinsics service to run an action. Origin-tagged `plugin:<node title>`; the service may refuse ungranted calls. |
-| `job.CmdStopFlow()` | Abort the entire workflow run. |
 
 **The one rule that matters:** exactly one terminal call — `Done` *or*
 `DoneWithError` — on every path out of your handler. Miss it and the node hangs;
 call it twice and you commit twice.
+
+**A plugin does not control the flow.** It has no command to stop or redirect a
+run, deliberately. Flow control belongs to the graph — a node's outgoing edges —
+and to the user, who can stop a run from the panel.
+
+That includes failure. **An error never stops a flow.** Any node can fail, and
+the platform treats it as information rather than flow control: the reason is
+committed as the node's output and reported on the event stream, and the run
+continues to the next node. `DoneWithError` concludes the node normally for
+exactly this reason. Let the graph decide what a failure means — a Rule node
+downstream can branch on the error — rather than expecting the plugin to cut the
+flow off.
 
 Depth: [jobs-and-commands.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/jobs-and-commands.md).
 

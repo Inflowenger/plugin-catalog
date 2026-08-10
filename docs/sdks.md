@@ -81,7 +81,7 @@ it.
 
 `progress` · `done` · `get current scope` · `get scope by JSON path` · `set on
 JSON path` · `next-port filter by tags` · `service call` (extrinsics, origin-tagged
-`plugin:<node title>`) · `stop flow`. Semantics in
+`plugin:<node title>`). Semantics in
 [jobs-and-commands.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/jobs-and-commands.md).
 
 A new SDK needs no work to support **`$this`**, inflow's non-standard path root
@@ -108,7 +108,7 @@ should do the same, in its own language's idioms.
 - [ ] Job init handshake assigns and threads `jobId`.
 - [ ] Progress frames, terminal commit, and error termination all match the
       payload shape above.
-- [ ] Context read/write, next-port filter, service call, stop flow.
+- [ ] Context read/write, next-port filter, service call.
 - [ ] Typed request casting idiomatic for the language.
 - [ ] Meta RPCs may return a bare array, not only the `{data, error}` envelope.
 - [ ] Two runnable examples — one adapter (external I/O), one pure transform.

@@ -46,8 +46,8 @@ point:
   can actually see.
 - **Context access** — read and write the running flow's shared context by JSON
   path, mid-execution.
-- **Flow control** — stream progress, finish a job, route outbound ports, or stop
-  the whole flow from inside a handler.
+- **Flow control** — stream progress, finish a job, route outbound ports, or end
+  the branch from inside a handler.
 - **Long-lived** — a plugin is a persistent process, so it can hold connections,
   run background loops, and surface queues, webhooks, hardware, or third-party
   APIs as nodes on the canvas.
