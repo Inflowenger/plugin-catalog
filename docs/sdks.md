@@ -56,7 +56,7 @@ subsequent command is addressed to it. The command payload is:
   "progress": 60,                       // 1–99 = frame, 100 = terminal
   "frame":    { "title": "…", "content": "…", "meta": {} },
   "details":  { },                      // partial data, or the committed result at 100
-  "commit_on": ""                       // optional JSON path to commit on
+  "commit_on": ""                       // optional JSON path to commit on ($this allowed)
 }
 ```
 
@@ -83,6 +83,12 @@ it.
 JSON path` · `next-port filter by tags` · `service call` (extrinsics, origin-tagged
 `plugin:<node title>`) · `stop flow`. Semantics in
 [jobs-and-commands.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/jobs-and-commands.md).
+
+A new SDK needs no work to support **`$this`**, inflow's non-standard path root
+for the location the current run was handed: an SDK passes paths through
+verbatim and the runtime rewrites them. Just don't validate paths against the
+JSON path grammar before sending — `$this.a.b` is not valid JSON path and must
+survive the trip.
 
 ### Ship an Agent Skill with it
 

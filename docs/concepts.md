@@ -169,8 +169,8 @@ Inside an action handler you hold a `Job`. It is not just a way to return a valu
 | `job.Done(data, key…)` | Complete (progress 100) and commit `data` as the node's output. |
 | `job.DoneWithError(msg)` | Complete with an error payload. |
 | `job.CmdGetCurrentScope()` | Read the whole current context scope. |
-| `job.CmdGetScope(path)` | Read a slice of context by JSON path, e.g. `$.OPA`. |
-| `job.CmdSetOnPath(path, m)` | Write into the flow context at a JSON path. |
+| `job.CmdGetScope(path)` | Read a slice of context by JSON path, e.g. `$.OPA` — or `$this…` for this run's own location. |
+| `job.CmdSetOnPath(path, m)` | Write into the flow context at a JSON path (`$this…` allowed). |
 | `job.CmdNextFilter(tags)` | Route at runtime — follow only the outbound ports carrying these tags. |
 | `job.CmdSvcCall(action, data, op)` | Ask the extrinsics service to run an action. Origin-tagged `plugin:<node title>`; the service may refuse ungranted calls. |
 | `job.CmdStopFlow()` | Abort the entire workflow run. |
@@ -218,6 +218,23 @@ which downstream branch runs.
 `job.Done(data)` commits your output normally. `CmdSetOnPath` is for writing
 somewhere *else* in the context — a shared accumulator, a well-known key another
 branch reads.
+
+### `$this` — where this run is standing
+
+A node's `scope` selects the slice of context it operates on, and a scope that
+matches several locations (`$.tickets[*]`) runs the node once per location. So a
+plugin cannot generally know its own address at compile time.
+
+`$this` is inflow's answer, and a root of its own outside the JSON path spec: it
+stands for the location the current run was handed. `$this.customer.id` reads
+that field out of *this* ticket; `$this` alone is the whole slice. It is valid
+anywhere a plugin hands the runtime a path — `CmdGetScope`, `CmdSetOnPath`, the
+commit key on `Done` — and the runtime rewrites it before parsing, so no SDK
+work is needed to support it.
+
+Reach for it whenever you would otherwise hardcode an index or make the designer
+retype their scope into your form. Note it differs from `CmdGetCurrentScope()`,
+which returns the node's own *output* slot rather than its input location.
 
 ---
 

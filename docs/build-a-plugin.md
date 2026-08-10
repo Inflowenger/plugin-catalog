@@ -437,6 +437,7 @@ shared state mid-execution.
 ```go
 scope := job.CmdGetCurrentScope()      // whole current scope
 opa   := job.CmdGetScope("$.OPA")      // by JSON path
+mine  := job.CmdGetScope("$this.id")   // relative to this run's own location
 
 job.CmdSetOnPath(`$["result"]`, map[string]any{"count": 42})
 
@@ -447,6 +448,12 @@ job.CmdNextFilter([]string{"approved"}) // follow only ports tagged "approved"
 Use `Done` for your node's own output; use `CmdSetOnPath` to write somewhere else
 in the context. `CmdNextFilter` is how a plugin becomes a branch point, not just a
 step.
+
+`$this` is worth knowing early: it is the location the *current* run was handed.
+A node scoped `$.tickets[*]` runs once per ticket, and each run's `$this` is its
+own ticket — so `$this.id` beats a hardcoded `$.tickets[0].id`, and your plugin
+stops caring where the designer pointed it. See
+[concepts.md](concepts.md#this--where-this-run-is-standing).
 
 ---
 
