@@ -23,9 +23,9 @@ connection.
 Values are bound as `$1, $2 …` parameters, never concatenated into the SQL, and
 each parameter keeps its type — `42` is an integer, `true` a boolean, `null` the
 SQL NULL, `{"k":1}` a jsonb object, and anything that is not JSON is text. Any
-string input — the SQL and every parameter — also resolves `{{$.path}}` tokens
-against the flow scope, so a query can pull ids and values straight from upstream
-nodes.
+string input — the SQL and every parameter — also resolves double-brace `$.path`
+mustache tokens against the flow scope, so a query can pull ids and values
+straight from upstream nodes.
 
 ## Actions
 

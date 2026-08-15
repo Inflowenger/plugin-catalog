@@ -21,7 +21,7 @@
       "slug": "postgres",
       "name": "Postgres",
       "node": "POSTGRES",
-      "description": "Read, write, and create-table-if-not-exists against PostgreSQL, with $1-bound parameters and {{$.path}} values pulled from the flow.",
+      "description": "Read, write, and create-table-if-not-exists against PostgreSQL, with $1-bound parameters and double-brace $.path mustache tokens pulled from the flow.",
       "repository": "https://github.com/FloMorphic/postgres-plugin",
       "entry": "plugins/postgres.md",
       "author": "FloMorphic",
