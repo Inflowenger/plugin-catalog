@@ -6,6 +6,7 @@ plugin's source, releases, and issues live in its author's own repository.
 | Plugin | Node | Actions | SDK | Author | Repository |
 |--------|------|--------:|-----|--------|------------|
 | [Jira](jira.md) | `JIRA` | 14 | Go | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
+| [Postgres](postgres.md) | `POSTGRES` | 3 | Go | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 
 [`index.json`](index.json) is the same list in machine-readable form, for tools
 that want to consume the catalog.

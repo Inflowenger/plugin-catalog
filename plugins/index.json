@@ -16,6 +16,21 @@
       "categories": ["issue-tracking", "devops"],
       "actions": 14,
       "status": "active"
+    },
+    {
+      "slug": "postgres",
+      "name": "Postgres",
+      "node": "POSTGRES",
+      "description": "Read, write, and create-table-if-not-exists against PostgreSQL, with $1-bound parameters and {{$.path}} values pulled from the flow.",
+      "repository": "https://github.com/FloMorphic/postgres-plugin",
+      "entry": "plugins/postgres.md",
+      "author": "FloMorphic",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["database"],
+      "actions": 3,
+      "status": "experimental"
     }
   ]
 }
