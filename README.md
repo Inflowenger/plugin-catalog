@@ -21,6 +21,7 @@ them.
 | Plugin | Node | Actions | SDK | Author | Repository |
 |--------|------|--------:|-----|--------|------------|
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
+| [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 
 Full entries in **[`plugins/`](plugins/)**. Machine-readable mirror:
 [`plugins/index.json`](plugins/index.json).
