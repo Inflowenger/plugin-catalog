@@ -18,6 +18,21 @@
       "status": "active"
     },
     {
+      "slug": "mongodb",
+      "name": "MongoDB",
+      "node": "MONGODB",
+      "description": "Find, write (insert/update/delete), upsert documents, and create collections in MongoDB. Connects by URI (Compass-style), with BSON-bound JSON filters, Extended JSON, and double-brace $.path mustache tokens pulled from the flow.",
+      "repository": "https://github.com/FloMorphic/mongodb-plugin",
+      "entry": "plugins/mongodb.md",
+      "author": "FloMorphic",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["database"],
+      "actions": 4,
+      "status": "experimental"
+    },
+    {
       "slug": "postgres",
       "name": "Postgres",
       "node": "POSTGRES",
