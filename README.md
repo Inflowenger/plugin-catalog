@@ -20,6 +20,7 @@ them.
 
 | Plugin | Node | Actions | SDK | Author | Repository |
 |--------|------|--------:|-----|--------|------------|
+| [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |

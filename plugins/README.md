@@ -5,6 +5,7 @@ plugin's source, releases, and issues live in its author's own repository.
 
 | Plugin | Node | Actions | SDK | Author | Repository |
 |--------|------|--------:|-----|--------|------------|
+| [Gmail (OpenConnector)](gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Jira](jira.md) | `JIRA` | 14 | Go | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](mongodb.md) | `MONGODB` | 4 | Go | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [Postgres](postgres.md) | `POSTGRES` | 3 | Go | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
