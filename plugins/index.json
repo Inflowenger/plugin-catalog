@@ -3,6 +3,21 @@
   "version": 1,
   "plugins": [
     {
+      "slug": "gmail-oc",
+      "name": "Gmail (OpenConnector)",
+      "node": "Gmail (OpenConnector)",
+      "description": "Send, search, read, and label Gmail messages as an account connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no Google credentials; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
+      "repository": "https://github.com/FloMorphic/gmail-oc-plugin",
+      "entry": "plugins/gmail-oc.md",
+      "author": "FloMorphic",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.2.0",
+      "categories": ["communication"],
+      "actions": 4,
+      "status": "experimental"
+    },
+    {
       "slug": "jira",
       "name": "Jira",
       "node": "JIRA",
