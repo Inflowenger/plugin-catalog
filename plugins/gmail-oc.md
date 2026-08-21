@@ -11,6 +11,7 @@
 | **SDK** | Node.js — [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) (`inflowv1`) |
 | **Version** | v0.2.0 |
 | **Categories** | `communication` |
+| **Runs on** | **FloMorphic only ★** — needs FloMorphic's Connect / OpenConnector proxy (`flomorphic.svc.oc.*`); not portable to a bare `inflowv1` host. |
 | **License** | See repository |
 | **Status** | Experimental |
 

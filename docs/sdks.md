@@ -8,12 +8,13 @@ convenience — it wires the subjects, marshals the envelopes, and gives you a
 
 | Language | Package | Status |
 |----------|---------|--------|
-| **Go** | [`github.com/Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable.** The reference `inflowv1` implementation — when the protocol and an SDK disagree, this one is right. Go 1.26+. |
-| Node.js / TypeScript | — | **Planned.** |
+| **Go** | [`github.com/Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable.** The reference `inflowv1` implementation and the mainstream path — when the protocol and an SDK disagree, this one is right. v0.1.7, Go 1.26+. |
+| **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) ([repo](https://github.com/Inflowenger/node-plugin-sdk)) | **Stable.** v0.1.1 on npm, Node 18+. Kept in step with the Go SDK, which stays the normative reference. Powers [Gmail (OpenConnector)](../plugins/gmail-oc.md). |
 | Python | — | **Planned.** |
 
-Until the other two land, Go is the supported path. See
-[build-a-plugin.md](build-a-plugin.md).
+Both are available today. Go is the reference implementation and Node.js tracks it
+(`npm i @inflowenger/node-plugin-sdk`); the four catalog plugins are built on them
+— three in Go, one in Node. See [build-a-plugin.md](build-a-plugin.md).
 
 ---
 

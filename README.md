@@ -18,12 +18,20 @@ them.
 
 ## The catalog
 
-| Plugin | Node | Actions | SDK | Author | Repository |
-|--------|------|--------:|-----|--------|------------|
-| [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
-| [Jira](plugins/jira.md) | `JIRA` | 14 | Go | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
-| [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
-| [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
+| Plugin | Node | Actions | SDK | Runs on | Author | Repository |
+|--------|------|--------:|-----|---------|--------|------------|
+| [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
+| [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
+| [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
+| [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
+
+**Runs on** — every plugin here speaks `inflowv1`, so **Any host** means it runs
+on any product that implements the protocol. A **★** marks a plugin that also
+needs a **host-specific service** and therefore runs on that platform alone:
+[Gmail (OpenConnector)](plugins/gmail-oc.md) reaches FloMorphic's central
+**Connect / OpenConnector** proxy over the `flomorphic.svc.oc.*` NATS subjects,
+which only FloMorphic provides. The dependency is recorded as `hostDependency` in
+[`index.json`](plugins/index.json).
 
 Full entries in **[`plugins/`](plugins/)**. Machine-readable mirror:
 [`plugins/index.json`](plugins/index.json).
@@ -144,9 +152,13 @@ Then go deep in the SDK's own docs — they are the normative reference:
 
 | Language | Package | Status |
 |----------|---------|--------|
-| **Go** | [`Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable** — the reference `inflowv1` implementation. Go 1.26+. |
-| Node.js / TypeScript | — | Planned |
+| **Go** | [`Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable** — the reference `inflowv1` implementation, and the mainstream path. v0.1.7, Go 1.26+. |
+| **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) | **Stable** — v0.1.1 on npm, Node 18+. Tracks the Go SDK feature-for-feature. |
 | Python | — | Planned |
+
+Both SDKs are available today; Go is the reference and Node.js follows it. The
+four listed plugins are built on them — three in Go, one ([Gmail
+(OpenConnector)](plugins/gmail-oc.md)) in Node.
 
 `inflowv1` is a plain NATS message protocol, so nothing stops a plugin in another
 language — the SDK is a convenience, not a requirement. If you want to port one,

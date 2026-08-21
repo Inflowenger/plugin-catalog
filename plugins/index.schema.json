@@ -61,6 +61,27 @@
           "enum": ["inflowv1"],
           "description": "Wire protocol the plugin speaks."
         },
+        "hostDependency": {
+          "type": "object",
+          "description": "Present only when the plugin needs a host-specific service on top of inflowv1, so it runs on that platform alone. Omit for plugins portable to any inflowv1 host.",
+          "required": ["platform", "service"],
+          "additionalProperties": false,
+          "properties": {
+            "platform": {
+              "type": "string",
+              "description": "The host the plugin is bound to, e.g. flomorphic."
+            },
+            "service": {
+              "type": "string",
+              "description": "The host-specific service the plugin depends on."
+            },
+            "subjects": {
+              "type": "array",
+              "items": { "type": "string" },
+              "description": "NATS subjects the host service is reached on, e.g. flomorphic.svc.oc.*."
+            }
+          }
+        },
         "version": {
           "type": "string",
           "description": "Latest released version, e.g. v0.1.0."

@@ -22,6 +22,12 @@ Deliberately low. The catalog is a map, not a gate.
 - **No credentials in action forms** and none in logs or committed output —
   connections come from settings profiles.
 - **Speaks `inflowv1`.** Any SDK, or none.
+- **Declares any host binding.** A plugin that speaks only `inflowv1` is portable
+  and runs on any host. If it also needs a **host-specific service** — a platform
+  proxy, an internal NATS subject, a capability only one product provides — it is
+  bound to that platform: mark it `<Platform> ★` in the **Runs on** column and add
+  a `hostDependency` object to its `index.json` entry. Portable plugins omit that
+  field.
 
 Experimental and half-finished are fine — mark `status` as `experimental` and say
 so in the entry. What is not fine is a plugin that mishandles other people's
@@ -36,7 +42,9 @@ credentials.
 3. Add the plugin to [`plugins/index.json`](plugins/index.json), matching
    [`index.schema.json`](plugins/index.schema.json).
 4. Add one row to **both** tables — [`plugins/README.md`](plugins/README.md) and
-   the root [README.md](README.md). Keep them alphabetical.
+   the root [README.md](README.md). Keep them alphabetical. In the **Runs on**
+   column put `Any host` for a portable plugin, or `<Platform> ★` if it depends
+   on a host-specific service (see below).
 5. Open a PR titled `Add <name> plugin`.
 
 Prefer not to write the files yourself? Open an

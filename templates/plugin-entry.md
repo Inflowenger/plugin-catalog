@@ -10,6 +10,7 @@
 | **SDK** | Go — [`go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) (`inflowv1`) |
 | **Version** | v0.1.0 |
 | **Categories** | `<category>` |
+| **Runs on** | Any `inflowv1` host — *or* `<Platform> ★` if it needs a host-specific service (see below) |
 | **License** | See repository |
 | **Status** | Active / Experimental / Unmaintained |
 
@@ -50,3 +51,18 @@ The plugin must already be provisioned in a space — that is where `PLUGIN_ID`,
 ## Notes
 
 Optional. Upstream API quirks, rate limits, anything a user will hit on day two.
+
+If your plugin needs a **host-specific service** on top of `inflowv1` (a proxy,
+an internal subject, a platform-only capability) and therefore runs on one
+platform only, say so here, put `<Platform> ★` in the **Runs on** row above, and
+add a `hostDependency` object to your `index.json` entry:
+
+```json
+"hostDependency": {
+  "platform": "<platform>",
+  "service": "<the service you depend on>",
+  "subjects": ["<nats.subjects.you.use.*>"]
+}
+```
+
+Omit `hostDependency` entirely if the plugin runs on any `inflowv1` host.

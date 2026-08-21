@@ -15,7 +15,12 @@
       "version": "v0.2.0",
       "categories": ["communication"],
       "actions": 4,
-      "status": "experimental"
+      "status": "experimental",
+      "hostDependency": {
+        "platform": "flomorphic",
+        "service": "Connect / OpenConnector proxy",
+        "subjects": ["flomorphic.svc.oc.*"]
+      }
     },
     {
       "slug": "jira",
