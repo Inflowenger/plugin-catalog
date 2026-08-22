@@ -66,6 +66,26 @@
       "categories": ["database"],
       "actions": 3,
       "status": "experimental"
+    },
+    {
+      "slug": "telegram-oc",
+      "name": "Telegram (OpenConnector)",
+      "node": "Telegram (OpenConnector)",
+      "description": "Send messages, photos and documents, and read updates and chats, as a Telegram bot connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no Telegram bot token; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
+      "repository": "https://github.com/mehdi-shokohi/telegram-oc-plugin",
+      "entry": "plugins/telegram-oc.md",
+      "author": "mehdi-shokohi",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["communication"],
+      "actions": 5,
+      "status": "experimental",
+      "hostDependency": {
+        "platform": "flomorphic",
+        "service": "Connect / OpenConnector proxy",
+        "subjects": ["flomorphic.svc.oc.*"]
+      }
     }
   ]
 }
