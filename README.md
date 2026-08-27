@@ -41,6 +41,31 @@ Full entries in **[`plugins/`](plugins/)**. Machine-readable mirror:
 
 ---
 
+## Roadmap
+
+Plugins already in progress and on their way into the catalog. Dates and scope
+may shift — this is where the catalog is heading, not a commitment.
+
+### In progress
+
+Being built now; expected to land in the catalog over the next few days.
+
+| Plugin | Node | Scope | Author |
+|--------|------|-------|--------|
+| Google Workspace | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** | Inflowenger dev team |
+| MySQL | `MYSQL` | Query and manage MySQL databases | Inflowenger dev team |
+| ClickHouse | `CLICKHOUSE` | Query ClickHouse for analytics workloads | Inflowenger dev team |
+| Qdrant | `QDRANT` | Vector search and collection management | Inflowenger dev team |
+
+### Requested
+
+Plugins people have asked for but nobody has claimed yet. Want to build one — or
+request another? Open an issue, or see **[Get your plugin listed](#get-your-plugin-listed)**.
+
+_Nothing open right now._
+
+---
+
 ## What a Plugin node is
 
 Inflowenger runs software whose logic is a **workflow graph**. The platform ships
