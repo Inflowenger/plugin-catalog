@@ -23,6 +23,7 @@ them.
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
+| [MySQL](plugins/mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
 | [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 | [Telegram (OpenConnector)](plugins/telegram-oc.md) | `Telegram (OpenConnector)` | 5 | Go | FloMorphic ★ | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [telegram-oc-plugin](https://github.com/mehdi-shokohi/telegram-oc-plugin) |
 
@@ -53,7 +54,6 @@ Being built now; expected to land in the catalog over the next few days.
 | Plugin | Node | Scope | Author |
 |--------|------|-------|--------|
 | Google Workspace | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** | Inflowenger dev team |
-| MySQL | `MYSQL` | Query and manage MySQL databases | Inflowenger dev team |
 | ClickHouse | `CLICKHOUSE` | Query ClickHouse for analytics workloads | Inflowenger dev team |
 | Qdrant | `QDRANT` | Vector search and collection management | Inflowenger dev team |
 
@@ -178,8 +178,8 @@ Then go deep in the SDK's own docs — they are the normative reference:
 
 | Language | Package | Status |
 |----------|---------|--------|
-| **Go** | [`Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable** — the reference `inflowv1` implementation, and the mainstream path. v0.1.7, Go 1.26+. |
-| **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) | **Stable** — v0.1.1 on npm, Node 18+. Tracks the Go SDK feature-for-feature. |
+| **Go** | [`Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable** — the reference `inflowv1` implementation, and the mainstream path. Go 1.26+. |
+| **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) | **Stable** — on npm, Node 18+. Tracks the Go SDK feature-for-feature. |
 | Python | — | Planned |
 
 Both SDKs are available today; Go is the reference and Node.js follows it. The

@@ -53,6 +53,21 @@
       "status": "experimental"
     },
     {
+      "slug": "mysql",
+      "name": "MySQL",
+      "node": "MYSQL",
+      "description": "Read, write, insert/upsert records, and create-table-if-not-exists against MySQL and MariaDB, with ?-bound parameters and double-brace {{$.path}} mustache tokens pulled from the flow. Node/TypeScript sibling of the Go Postgres plugin.",
+      "repository": "https://github.com/Inflowenger/mysql-plugin",
+      "entry": "plugins/mysql.md",
+      "author": "Inflowenger",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["database"],
+      "actions": 4,
+      "status": "experimental"
+    },
+    {
       "slug": "postgres",
       "name": "Postgres",
       "node": "POSTGRES",
