@@ -83,6 +83,21 @@
       "status": "experimental"
     },
     {
+      "slug": "qdrant",
+      "name": "Qdrant",
+      "node": "QDRANT",
+      "description": "Vector search and collection management on Qdrant — create/list collections, upsert points, nearest-neighbour search, retrieve, scroll, and delete. Talks directly to Qdrant's REST API and can embed plain text via OpenAI, Gemini, Cohere, or a custom OpenAI-compatible endpoint.",
+      "repository": "https://github.com/Inflowenger/qdrant-plugin",
+      "entry": "plugins/qdrant.md",
+      "author": "Inflowenger",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["database", "ai"],
+      "actions": 7,
+      "status": "experimental"
+    },
+    {
       "slug": "telegram-oc",
       "name": "Telegram (OpenConnector)",
       "node": "Telegram (OpenConnector)",

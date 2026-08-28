@@ -25,6 +25,7 @@ them.
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](plugins/mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
 | [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
+| [Qdrant](plugins/qdrant.md) | `QDRANT` | 7 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [qdrant-plugin](https://github.com/Inflowenger/qdrant-plugin) |
 | [Telegram (OpenConnector)](plugins/telegram-oc.md) | `Telegram (OpenConnector)` | 5 | Go | FloMorphic ★ | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [telegram-oc-plugin](https://github.com/mehdi-shokohi/telegram-oc-plugin) |
 
 **Runs on** — every plugin here speaks `inflowv1`, so **Any host** means it runs
@@ -55,7 +56,6 @@ Being built now; expected to land in the catalog over the next few days.
 |--------|------|-------|--------|
 | Google Workspace | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** | Inflowenger dev team |
 | ClickHouse | `CLICKHOUSE` | Query ClickHouse for analytics workloads | Inflowenger dev team |
-| Qdrant | `QDRANT` | Vector search and collection management | Inflowenger dev team |
 
 ### Requested
 
