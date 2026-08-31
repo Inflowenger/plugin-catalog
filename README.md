@@ -54,8 +54,21 @@ Being built now; expected to land in the catalog over the next few days.
 
 | Plugin | Node | Scope | Author |
 |--------|------|-------|--------|
+| osctrl **(next up)** | `OSCTRL` | Confirmed feasible and the next plugin to land. Manage an [osctrl](https://osctrl.net) fleet — the central control panel for osquery clients: list nodes, run queries, and manage the endpoints that have osquery installed | Inflowenger dev team |
 | Google Workspace | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** | Inflowenger dev team |
 | ClickHouse | `CLICKHOUSE` | Query ClickHouse for analytics workloads | Inflowenger dev team |
+
+### Feasibility study
+
+Candidates under evaluation, **not yet committed**. Each is being weighed for how
+well it maps onto the `inflowv1` model and onto FloMorphic's needs, and for the
+effort it takes given the current SDKs. Items here **may be cancelled or reshaped**
+— *Effort* is a first estimate of quick win vs. hard win, not a promise.
+
+| Plugin | Node | What it would do | Approach under review | Effort | Status |
+|--------|------|------------------|-----------------------|--------|--------|
+| Network devices | `NETDEVICE` | Collect facts, interfaces, IPs, BGP/ARP/LLDP neighbours from routers, switches, and firewalls across vendors | Connection layer **[scrapligo](https://github.com/scrapli/scrapligo)** on the reference **Go SDK** — the path that ships today (SSH/NETCONF, multivendor; structured transports where the device offers them, CLI + ntc-templates where it doesn't, and we normalise to JSON). NAPALM/**scrapli** would give structured getters for free but need Python, so this candidate is also the concrete requirement driving the **[Planned Python SDK](docs/sdks.md)** | **Hard win** — Go now (we normalise), or wait on the Python SDK | In study |
+| ManageEngine | `MANAGEENGINE` | Read/write against a ManageEngine product's REST API (ServiceDesk Plus, Endpoint Central, OpManager, or ADManager Plus) | Standard REST + API-key/OAuth — fits the Go or Node SDK directly, close to the Jira plugin. **Which product** is still open, and that decides the whole node | **Quick win** once the product is chosen | In study |
 
 ### Requested
 
