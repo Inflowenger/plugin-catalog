@@ -65,10 +65,16 @@ well it maps onto the `inflowv1` model and onto FloMorphic's needs, and for the
 effort it takes given the current SDKs. Items here **may be cancelled or reshaped**
 — *Effort* is a first estimate of quick win vs. hard win, not a promise.
 
+Each of these is a **collector**: the plugin's job is only to access a system and
+return data frames. The logic on top — storing frames in a doc store, evaluating
+them, running an LLM node for recommendations — is built **downstream in the
+workflow graph**, not inside the plugin.
+
 | Plugin | Node | What it would do | Approach under review | Effort | Status |
 |--------|------|------------------|-----------------------|--------|--------|
 | Network devices | `NETDEVICE` | Collect facts, interfaces, IPs, BGP/ARP/LLDP neighbours from routers, switches, and firewalls across vendors | Connection layer **[scrapligo](https://github.com/scrapli/scrapligo)** on the reference **Go SDK** — the path that ships today (SSH/NETCONF, multivendor; structured transports where the device offers them, CLI + ntc-templates where it doesn't, and we normalise to JSON). NAPALM/**scrapli** would give structured getters for free but need Python, so this candidate is also the concrete requirement driving the **[Planned Python SDK](docs/sdks.md)** | **Hard win** — Go now (we normalise), or wait on the Python SDK | In study |
 | ManageEngine | `MANAGEENGINE` | Read/write against a ManageEngine product's REST API (ServiceDesk Plus, Endpoint Central, OpManager, or ADManager Plus) | Standard REST + API-key/OAuth — fits the Go or Node SDK directly, close to the Jira plugin. **Which product** is still open, and that decides the whole node | **Quick win** once the product is chosen | In study |
+| Cloud providers | `AWS` · `AZURE` · `GCP` | Pull resource inventory and deployment status, and read each cloud's native security findings — a Wiz-style trace of what's deployed and what's misconfigured | First-class **Go** SDKs, credentials via the settings profile (AWS key/role · Azure service principal · GCP service-account JSON). **The plugin only accesses and collects data frames** — ① inventory + status (CloudFormation/Config · Resource Graph · Cloud Asset Inventory), ② the cloud's *own* posture findings (**Security Hub** · **Defender for Cloud** · **Security Command Center**). The Wiz-style graph, evaluation, and recommendations are built **downstream in the workflow** (collected frames → doc store → LLM node), not in the plugin. One node per provider | **Hard win** — three providers, phased; ① is tractable, ② rides native findings | In study |
 
 ### Requested
 
