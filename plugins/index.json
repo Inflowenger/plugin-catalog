@@ -3,6 +3,21 @@
   "version": 1,
   "plugins": [
     {
+      "slug": "clickhouse",
+      "name": "ClickHouse",
+      "node": "CLICKHOUSE",
+      "description": "Read queries, write/DDL, insert records, and create-table-if-not-exists against ClickHouse over its HTTP interface, with named typed {name:Type} parameters and double-brace {{$.path}} mustache tokens pulled from the flow. Tuned for analytics workloads.",
+      "repository": "https://github.com/Inflowenger/clickhouse-plugin",
+      "entry": "plugins/clickhouse.md",
+      "author": "Inflowenger",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["database", "analytics"],
+      "actions": 4,
+      "status": "experimental"
+    },
+    {
       "slug": "gmail-oc",
       "name": "Gmail (OpenConnector)",
       "node": "Gmail (OpenConnector)",

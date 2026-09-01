@@ -20,6 +20,7 @@ them.
 
 | Plugin | Node | Actions | SDK | Runs on | Author | Repository |
 |--------|------|--------:|-----|---------|--------|------------|
+| [ClickHouse](plugins/clickhouse.md) | `CLICKHOUSE` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [clickhouse-plugin](https://github.com/Inflowenger/clickhouse-plugin) |
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
@@ -56,7 +57,6 @@ Being built now; expected to land in the catalog over the next few days.
 |--------|------|-------|--------|
 | osctrl **(next up)** | `OSCTRL` | Confirmed feasible and the next plugin to land. Manage an [osctrl](https://osctrl.net) fleet — the central control panel for osquery clients: list nodes, run queries, and manage the endpoints that have osquery installed | Inflowenger dev team |
 | Google Workspace **(in testing)** | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** — **Docs, Drive, and Calendar are feature-complete and in testing**, effectively done | Inflowenger dev team |
-| ClickHouse **(in testing)** | `CLICKHOUSE` | Query ClickHouse for analytics workloads — **feature-complete and in testing**, effectively done | Inflowenger dev team |
 
 ### Feasibility study
 
