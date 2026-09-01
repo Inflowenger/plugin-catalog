@@ -111,7 +111,7 @@
         },
         "status": {
           "type": "string",
-          "enum": ["active", "experimental", "unmaintained"],
+          "enum": ["active", "beta", "experimental", "unmaintained"],
           "description": "Maintenance state as reported by the author."
         }
       }

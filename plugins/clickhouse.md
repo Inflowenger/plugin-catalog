@@ -11,7 +11,7 @@
 | **Version** | v0.1.0 |
 | **Categories** | `database`, `analytics` |
 | **License** | See repository |
-| **Status** | Experimental |
+| **Status** | Active |
 
 ## What it does
 

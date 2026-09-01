@@ -27,6 +27,7 @@ them.
 | [MySQL](plugins/mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
 | [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 | [Qdrant](plugins/qdrant.md) | `QDRANT` | 7 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [qdrant-plugin](https://github.com/Inflowenger/qdrant-plugin) |
+| [Scrapli](plugins/scrapli.md) **(beta)** | `SCRAPLI` | 2 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [scrapli-plugin](https://github.com/Inflowenger/scrapli-plugin) |
 | [Telegram (OpenConnector)](plugins/telegram-oc.md) | `Telegram (OpenConnector)` | 5 | Go | FloMorphic ★ | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [telegram-oc-plugin](https://github.com/mehdi-shokohi/telegram-oc-plugin) |
 
 **Runs on** — every plugin here speaks `inflowv1`, so **Any host** means it runs
@@ -202,8 +203,9 @@ Then go deep in the SDK's own docs — they are the normative reference:
 | **Python** | [`inflowenger-plugin-sdk`](https://pypi.org/project/inflowenger-plugin-sdk/) | **Beta** — first release on PyPI, Python 3.11+. The Python port of the Go SDK ([`Inflowenger/py-plugin-sdk`](https://github.com/Inflowenger/py-plugin-sdk)). |
 
 All three SDKs are available today; Go is the reference, and Node.js and Python
-follow it. The four listed plugins are built on them — three in Go, one ([Gmail
-(OpenConnector)](plugins/gmail-oc.md)) in Node.
+follow it. The listed plugins are built on them — four in Go, four in Node, and
+one ([Scrapli](plugins/scrapli.md), currently **beta**) in Python, the catalog's
+first plugin on the Python SDK.
 
 `inflowv1` is a plain NATS message protocol, so nothing stops a plugin in another
 language — the SDK is a convenience, not a requirement. If you want to port one,

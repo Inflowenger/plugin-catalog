@@ -15,7 +15,7 @@
       "version": "v0.1.0",
       "categories": ["database", "analytics"],
       "actions": 4,
-      "status": "experimental"
+      "status": "active"
     },
     {
       "slug": "gmail-oc",
@@ -30,7 +30,7 @@
       "version": "v0.2.0",
       "categories": ["communication"],
       "actions": 4,
-      "status": "experimental",
+      "status": "active",
       "hostDependency": {
         "platform": "flomorphic",
         "service": "Connect / OpenConnector proxy",
@@ -65,7 +65,7 @@
       "version": "v0.1.0",
       "categories": ["database"],
       "actions": 4,
-      "status": "experimental"
+      "status": "active"
     },
     {
       "slug": "mysql",
@@ -80,7 +80,7 @@
       "version": "v0.1.0",
       "categories": ["database"],
       "actions": 4,
-      "status": "experimental"
+      "status": "active"
     },
     {
       "slug": "postgres",
@@ -95,7 +95,7 @@
       "version": "v0.1.0",
       "categories": ["database"],
       "actions": 3,
-      "status": "experimental"
+      "status": "active"
     },
     {
       "slug": "qdrant",
@@ -110,7 +110,22 @@
       "version": "v0.1.0",
       "categories": ["database", "ai"],
       "actions": 7,
-      "status": "experimental"
+      "status": "active"
+    },
+    {
+      "slug": "scrapli",
+      "name": "Scrapli",
+      "node": "SCRAPLI",
+      "description": "Run CLI commands and push configuration to network devices — Cisco IOS-XE / NX-OS / IOS-XR, Arista EOS, Juniper JunOS — over SSH/Telnet via scrapli, with optional TextFSM (ntc-templates) parsing. The catalog's first Python-SDK plugin.",
+      "repository": "https://github.com/Inflowenger/scrapli-plugin",
+      "entry": "plugins/scrapli.md",
+      "author": "Inflowenger",
+      "sdk": "python",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["devops", "utility"],
+      "actions": 2,
+      "status": "beta"
     },
     {
       "slug": "telegram-oc",
@@ -125,7 +140,7 @@
       "version": "v0.1.0",
       "categories": ["communication"],
       "actions": 5,
-      "status": "experimental",
+      "status": "active",
       "hostDependency": {
         "platform": "flomorphic",
         "service": "Connect / OpenConnector proxy",

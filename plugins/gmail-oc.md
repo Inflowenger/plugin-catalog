@@ -13,7 +13,7 @@
 | **Categories** | `communication` |
 | **Runs on** | **FloMorphic only ★** — needs FloMorphic's Connect / OpenConnector proxy (`flomorphic.svc.oc.*`); not portable to a bare `inflowv1` host. |
 | **License** | See repository |
-| **Status** | Experimental |
+| **Status** | Active |
 
 ## What it does
 
