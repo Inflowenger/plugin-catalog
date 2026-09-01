@@ -55,8 +55,8 @@ Being built now; expected to land in the catalog over the next few days.
 | Plugin | Node | Scope | Author |
 |--------|------|-------|--------|
 | osctrl **(next up)** | `OSCTRL` | Confirmed feasible and the next plugin to land. Manage an [osctrl](https://osctrl.net) fleet — the central control panel for osquery clients: list nodes, run queries, and manage the endpoints that have osquery installed | Inflowenger dev team |
-| Google Workspace | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** | Inflowenger dev team |
-| ClickHouse | `CLICKHOUSE` | Query ClickHouse for analytics workloads | Inflowenger dev team |
+| Google Workspace **(in testing)** | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** — **Docs, Drive, and Calendar are feature-complete and in testing**, effectively done | Inflowenger dev team |
+| ClickHouse **(in testing)** | `CLICKHOUSE` | Query ClickHouse for analytics workloads — **feature-complete and in testing**, effectively done | Inflowenger dev team |
 
 ### Feasibility study
 
@@ -72,7 +72,7 @@ workflow graph**, not inside the plugin.
 
 | Plugin | Node | What it would do | Approach under review | Effort | Status |
 |--------|------|------------------|-----------------------|--------|--------|
-| Network devices | `NETDEVICE` | Collect facts, interfaces, IPs, BGP/ARP/LLDP neighbours from routers, switches, and firewalls across vendors | Connection layer **[scrapligo](https://github.com/scrapli/scrapligo)** on the reference **Go SDK** — the path that ships today (SSH/NETCONF, multivendor; structured transports where the device offers them, CLI + ntc-templates where it doesn't, and we normalise to JSON). NAPALM/**scrapli** would give structured getters for free but need Python, so this candidate is also the concrete requirement driving the **[Planned Python SDK](docs/sdks.md)** | **Hard win** — Go now (we normalise), or wait on the Python SDK | In study |
+| Network devices | `NETDEVICE` | Collect facts, interfaces, IPs, BGP/ARP/LLDP neighbours from routers, switches, and firewalls across vendors | Connection layer **[scrapligo](https://github.com/scrapli/scrapligo)** on the reference **Go SDK** — the path that ships today (SSH/NETCONF, multivendor; structured transports where the device offers them, CLI + ntc-templates where it doesn't, and we normalise to JSON). NAPALM/**scrapli** would give structured getters for free but need Python, which is the concrete requirement that drove the now-shipping **[Python SDK](docs/sdks.md)** | **Hard win** — Go now (we normalise), or ride the Python SDK | In study |
 | ManageEngine | `MANAGEENGINE` | Read/write against a ManageEngine product's REST API (ServiceDesk Plus, Endpoint Central, OpManager, or ADManager Plus) | Standard REST + API-key/OAuth — fits the Go or Node SDK directly, close to the Jira plugin. **Which product** is still open, and that decides the whole node | **Quick win** once the product is chosen | In study |
 | Cloud providers | `AWS` · `AZURE` · `GCP` | Pull resource inventory and deployment status, and read each cloud's native security findings — a Wiz-style trace of what's deployed and what's misconfigured | First-class **Go** SDKs, credentials via the settings profile (AWS key/role · Azure service principal · GCP service-account JSON). **The plugin only accesses and collects data frames** — ① inventory + status (CloudFormation/Config · Resource Graph · Cloud Asset Inventory), ② the cloud's *own* posture findings (**Security Hub** · **Defender for Cloud** · **Security Command Center**). The Wiz-style graph, evaluation, and recommendations are built **downstream in the workflow** (collected frames → doc store → LLM node), not in the plugin. One node per provider | **Hard win** — three providers, phased; ① is tractable, ② rides native findings | In study |
 
@@ -199,10 +199,10 @@ Then go deep in the SDK's own docs — they are the normative reference:
 |----------|---------|--------|
 | **Go** | [`Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable** — the reference `inflowv1` implementation, and the mainstream path. Go 1.26+. |
 | **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) | **Stable** — on npm, Node 18+. Tracks the Go SDK feature-for-feature. |
-| Python | — | Planned |
+| **Python** | [`inflowenger-plugin-sdk`](https://pypi.org/project/inflowenger-plugin-sdk/) | **Beta** — first release on PyPI, Python 3.11+. The Python port of the Go SDK ([`Inflowenger/py-plugin-sdk`](https://github.com/Inflowenger/py-plugin-sdk)). |
 
-Both SDKs are available today; Go is the reference and Node.js follows it. The
-four listed plugins are built on them — three in Go, one ([Gmail
+All three SDKs are available today; Go is the reference, and Node.js and Python
+follow it. The four listed plugins are built on them — three in Go, one ([Gmail
 (OpenConnector)](plugins/gmail-oc.md)) in Node.
 
 `inflowv1` is a plain NATS message protocol, so nothing stops a plugin in another
