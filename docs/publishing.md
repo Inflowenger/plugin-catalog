@@ -34,9 +34,16 @@ The catalog entry is a pointer; your README is where people actually land. Cover
 
 1. **What it does** — one paragraph, and which versions/flavours of the service
    it supports.
-2. **Quick start** — clone, copy the example env, run. Say plainly that the
-   plugin must already be provisioned in a space, and that the startup
-   subscription log is the confirmation it registered.
+2. **Run** — clone, copy the example env, run, using the **standard command for
+   your language** verbatim (`go run .` · `npm install && npm run build && npm start`
+   · `pip install -r requirements.txt && python main.py`), then the FloMorphic
+   paragraph: define the plugin under **Extensions**, download `.env.inflow` or
+   run the generated one-liner, manage it with `./plugin.sh`. Say plainly that
+   the plugin must already be provisioned in a space, and that the startup
+   subscription log is the confirmation it registered. If the repo also ships a
+   `SKILL.md`, `MANUAL.md`, or other how-to-run Markdown, it links to this
+   section instead of restating a command. The rule and the exact wording:
+   [run-a-plugin.md](run-a-plugin.md).
 3. **How the connection reaches the plugin** — that you store no credentials, what
    the profile keys are, which are required, and how to bind a profile to a node.
    This is the section users need most and the one most often missing.
@@ -89,8 +96,11 @@ official product.
 
 ## Deploying
 
-A plugin is an ordinary long-running process. Whatever runs a Go binary runs it —
-systemd, Docker, Kubernetes, a VM.
+A plugin is an ordinary long-running process. Whatever runs a Go binary, a Node
+script, or a Python script runs it — systemd, Docker, Kubernetes, a VM. The
+quickest path on a single host is FloMorphic's **Extensions** one-liner, which
+clones, starts, and leaves a `./plugin.sh` helper for `start / stop / restart /
+status / logs / update` — see [run-a-plugin.md](run-a-plugin.md).
 
 What it needs at runtime:
 

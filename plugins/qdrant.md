@@ -71,6 +71,12 @@ The plugin must already be provisioned in a space — that is where `PLUGIN_ID`,
 never go in `.env.inflow`; they are a settings profile. See
 [docs/build-a-plugin.md § Provision](../docs/build-a-plugin.md#1-provision-the-plugin).
 
+**From FloMorphic:** define the plugin under **Extensions**, then either download
+the filled-in `.env.inflow` and run the commands above, or run the generated
+one-liner — it clones, starts, and injects `./plugin.sh` for
+`start / stop / restart / status / logs / update`. See
+[docs/run-a-plugin.md § Start from FloMorphic](../docs/run-a-plugin.md#start-from-flomorphic).
+
 ## Notes
 
 - Raise `REQ_TIMEOUT` (seconds) at deploy time if your Qdrant instance is slow to

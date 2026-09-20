@@ -37,16 +37,35 @@ the plugin stores no credentials — the platform supplies them per call as
 
 ## Install
 
+Keep only the block for your SDK. The last lines are the **standard command**
+for the language — the same one your README § Run shows and the one the
+FloMorphic one-liner runs (rule: [docs/run-a-plugin.md](../docs/run-a-plugin.md)).
+
 ```bash
 git clone https://github.com/<you>/<repo>
 cd <repo>
 cp .env.inflow.example .env.inflow   # PLUGIN_ID / INFRA_CRED / INFRA_URL
+
+# Go
 go run .
+
+# Node.js / TypeScript
+npm install && npm run build && npm start
+
+# Python
+python -m venv .venv && . .venv/bin/activate
+pip install -r requirements.txt && python main.py
 ```
 
 The plugin must already be provisioned in a space — that is where `PLUGIN_ID`,
 `INFRA_CRED` and `INFRA_URL` come from. See
 [docs/build-a-plugin.md § Provision](../docs/build-a-plugin.md#1-provision-the-plugin).
+
+**From FloMorphic:** define the plugin under **Extensions**, then either download
+the filled-in `.env.inflow` and run the commands above, or run the generated
+one-liner — it clones, starts, and injects `./plugin.sh` for
+`start / stop / restart / status / logs / update`. See
+[docs/run-a-plugin.md § Start from FloMorphic](../docs/run-a-plugin.md#start-from-flomorphic).
 
 ## Notes
 

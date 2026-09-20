@@ -18,6 +18,26 @@
       "status": "active"
     },
     {
+      "slug": "github-oc",
+      "name": "GitHub (OpenConnector)",
+      "node": "GitHub (OpenConnector)",
+      "description": "Read-only GitHub collector — repositories, activity, search, and the security surface (Dependabot / secret-scanning / code-scanning alerts, branch protection & rulesets, org members & 2FA, deploy keys / webhooks / Actions settings) — as a GitHub account connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no GitHub token; uses oomol's curated actions plus its provider proxy over the flomorphic.svc.oc.* NATS subjects. The catalog's first Python -oc plugin.",
+      "repository": "https://github.com/FloMorphic/github-oc",
+      "entry": "plugins/github-oc.md",
+      "author": "FloMorphic",
+      "sdk": "python",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["devops"],
+      "actions": 13,
+      "status": "beta",
+      "hostDependency": {
+        "platform": "flomorphic",
+        "service": "Connect / OpenConnector proxy",
+        "subjects": ["flomorphic.svc.oc.*"]
+      }
+    },
+    {
       "slug": "gmail-oc",
       "name": "Gmail (OpenConnector)",
       "node": "Gmail (OpenConnector)",

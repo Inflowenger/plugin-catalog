@@ -18,6 +18,15 @@ Deliberately low. The catalog is a map, not a gate.
 - **Public repository** with a `LICENSE` file.
 - **A README** covering what it does, how to run it, and how the connection is
   supplied. See [docs/publishing.md § README](docs/publishing.md#readme).
+- **Starts with the standard command.** `.env.inflow.example` at the root, and
+  the plugin starts from the root with the language's standard command — `go run .`,
+  `npm install && npm run build && npm start`, or
+  `pip install -r requirements.txt && python main.py` — nothing more. The README
+  has a `## Run` section showing that command verbatim, and any other Markdown
+  that explains how to start it (`SKILL.md`, `MANUAL.md`, `docs/`) links there
+  rather than giving a different one. This is what FloMorphic's **Extensions**
+  one-liner and its `plugin.sh` helper rely on. Full rule:
+  [docs/run-a-plugin.md](docs/run-a-plugin.md).
 - **A tagged release** whose version matches `PluginIntro.Version`.
 - **No credentials in action forms** and none in logs or committed output —
   connections come from settings profiles.

@@ -21,6 +21,7 @@ them.
 | Plugin | Node | Actions | SDK | Runs on | Author | Repository |
 |--------|------|--------:|-----|---------|--------|------------|
 | [ClickHouse](plugins/clickhouse.md) | `CLICKHOUSE` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [clickhouse-plugin](https://github.com/Inflowenger/clickhouse-plugin) |
+| [GitHub (OpenConnector)](plugins/github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
@@ -33,7 +34,8 @@ them.
 **Runs on** — every plugin here speaks `inflowv1`, so **Any host** means it runs
 on any product that implements the protocol. A **★** marks a plugin that also
 needs a **host-specific service** and therefore runs on that platform alone:
-[Gmail (OpenConnector)](plugins/gmail-oc.md) reaches FloMorphic's central
+[Gmail](plugins/gmail-oc.md), [Telegram](plugins/telegram-oc.md) and
+[GitHub (OpenConnector)](plugins/github-oc.md) reach FloMorphic's central
 **Connect / OpenConnector** proxy over the `flomorphic.svc.oc.*` NATS subjects,
 which only FloMorphic provides. The dependency is recorded as `hostDependency` in
 [`index.json`](plugins/index.json).
@@ -42,6 +44,40 @@ Full entries in **[`plugins/`](plugins/)**. Machine-readable mirror:
 [`plugins/index.json`](plugins/index.json).
 
 > Built one? See **[Get your plugin listed](#get-your-plugin-listed)**.
+
+---
+
+## Run a plugin
+
+Every listed plugin starts the same way: clone, copy `.env.inflow.example` to
+`.env.inflow`, fill in `PLUGIN_ID` / `INFRA_CRED` / `INFRA_URL`, and run the
+**standard command** for its language from the repository root. That is a
+catalog rule, not a convention — it is what lets the same one-liner install any
+plugin here.
+
+| SDK | Standard command |
+|-----|------------------|
+| **Go** | `go run .` |
+| **Node.js / TypeScript** | `npm install && npm run build && npm start` |
+| **Python** | `python -m venv .venv && . .venv/bin/activate && pip install -r requirements.txt && python main.py` |
+
+**On FloMorphic** you don't provision by hand. Open the **Extensions** menu,
+define the plugin (name + repository), and the extension page gives you two
+things: the filled-in **`.env.inflow`** to download, and a generated
+**one-liner** that clones the repo, writes the env, detects the language, starts
+the process, and injects a **`./plugin.sh`** helper —
+`start · stop · restart · status · logs · update` — so you never need to remember
+the language's command, a PID, or a log path.
+
+```bash
+# copied from Extensions → <your plugin> → Install (carries a live credential)
+curl -fsSL "https://<your-flomorphic>/…/install.sh" | bash
+./plugin.sh status
+./plugin.sh logs -f
+```
+
+The full rule, the per-language details, and what the helper does under the
+hood: **[docs/run-a-plugin.md](docs/run-a-plugin.md)**.
 
 ---
 
@@ -56,7 +92,7 @@ Being built now; expected to land in the catalog over the next few days.
 
 | Plugin | Node | Scope | Author |
 |--------|------|-------|--------|
-| osctrl **(next up)** | `OSCTRL` | Confirmed feasible and the next plugin to land. Manage an [osctrl](https://osctrl.net) fleet — the central control panel for osquery clients: list nodes, run queries, and manage the endpoints that have osquery installed | Inflowenger dev team |
+| osctrl | `OSCTRL` | Confirmed feasible. Manage an [osctrl](https://osctrl.net) fleet — the central control panel for osquery clients: list nodes, run queries, and manage the endpoints that have osquery installed | Inflowenger dev team |
 | Google Workspace **(in testing)** | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** — **Docs, Drive, and Calendar are feature-complete and in testing**, effectively done | Inflowenger dev team |
 
 ### Feasibility study
@@ -75,7 +111,16 @@ workflow graph**, not inside the plugin.
 |--------|------|------------------|-----------------------|--------|--------|
 | Network devices | `NETDEVICE` | Collect facts, interfaces, IPs, BGP/ARP/LLDP neighbours from routers, switches, and firewalls across vendors | Connection layer **[scrapligo](https://github.com/scrapli/scrapligo)** on the reference **Go SDK** — the path that ships today (SSH/NETCONF, multivendor; structured transports where the device offers them, CLI + ntc-templates where it doesn't, and we normalise to JSON). NAPALM/**scrapli** would give structured getters for free but need Python, which is the concrete requirement that drove the now-shipping **[Python SDK](docs/sdks.md)** | **Hard win** — Go now (we normalise), or ride the Python SDK | In study |
 | ManageEngine | `MANAGEENGINE` | Read/write against a ManageEngine product's REST API (ServiceDesk Plus, Endpoint Central, OpManager, or ADManager Plus) | Standard REST + API-key/OAuth — fits the Go or Node SDK directly, close to the Jira plugin. **Which product** is still open, and that decides the whole node | **Quick win** once the product is chosen | In study |
-| Cloud providers | `AWS` · `AZURE` · `GCP` | Pull resource inventory and deployment status, and read each cloud's native security findings — a Wiz-style trace of what's deployed and what's misconfigured | First-class **Go** SDKs, credentials via the settings profile (AWS key/role · Azure service principal · GCP service-account JSON). **The plugin only accesses and collects data frames** — ① inventory + status (CloudFormation/Config · Resource Graph · Cloud Asset Inventory), ② the cloud's *own* posture findings (**Security Hub** · **Defender for Cloud** · **Security Command Center**). The Wiz-style graph, evaluation, and recommendations are built **downstream in the workflow** (collected frames → doc store → LLM node), not in the plugin. One node per provider | **Hard win** — three providers, phased; ① is tractable, ② rides native findings | In study |
+| Cloud providers **(priority)** | `AWS` · `AZURE` · `GCP` | Pull resource inventory and deployment status, and read each cloud's native security findings — a Wiz-style trace of what's deployed and what's misconfigured. Wave 1 of the [security collectors plan](docs/security-collectors-plan.md), AWS first | First-class **Go** SDKs, credentials via the settings profile (AWS key/role · Azure service principal · GCP service-account JSON) — oomol has no AWS/Azure/GCP connector, so these are not `-oc` plugins. **The plugin only accesses and collects data frames** — ① inventory + status (CloudFormation/Config · Resource Graph · Cloud Asset Inventory), ② the cloud's *own* posture findings (**Security Hub** · **Defender for Cloud** · **Security Command Center**). The Wiz-style graph, evaluation, and recommendations are built **downstream in the workflow** (collected frames → doc store → LLM node), not in the plugin. One node per provider | **Hard win** — three providers, phased; ① is tractable, ② rides native findings | In study |
+
+> **Security collectors.** The wider plan for security-posture collectors —
+> code, cloud, logs, identity, vulnerability intel, network, threat intel — is
+> in **[docs/security-collectors-plan.md](docs/security-collectors-plan.md)**.
+> With [GitHub (OpenConnector)](plugins/github-oc.md) shipped, its wave 1 is the three clouds above plus
+> `OPENSEARCH`, `LDAP`, `VULNINTEL`, `WAZUH`, `NETBOX`; each joins this table
+> as it gets its own feasibility note. Where oomol already has a connector
+> (GitLab, Okta, Elasticsearch, Shodan, VirusTotal, …) the plugin is an `-oc`
+> node like Gmail and Telegram.
 
 ### Requested
 
@@ -183,7 +228,8 @@ commands, meta RPCs, and testing without a live platform.
 | 2 | [docs/build-a-plugin.md](docs/build-a-plugin.md) | Zero to a running plugin, in order. |
 | 3 | [docs/dependent-fields.md](docs/dependent-fields.md) | Forms whose fields depend on the connected account or on each other — lookups, cascades, connection tests. Read before you design your second form. |
 | 4 | [docs/sdks.md](docs/sdks.md) | Which language you can write in today. |
-| 5 | [docs/publishing.md](docs/publishing.md) | Versioning, deploying, and getting listed. |
+| 5 | [docs/run-a-plugin.md](docs/run-a-plugin.md) | The standard start command per language, the FloMorphic Extensions one-liner and `plugin.sh`, and the README rule every listed plugin follows. |
+| 6 | [docs/publishing.md](docs/publishing.md) | Versioning, deploying, and getting listed. |
 
 Then go deep in the SDK's own docs — they are the normative reference:
 [cookbook](https://github.com/Inflowenger/go-plugin-sdk/blob/main/cookbook.md) ·
@@ -204,8 +250,8 @@ Then go deep in the SDK's own docs — they are the normative reference:
 
 All three SDKs are available today; Go is the reference, and Node.js and Python
 follow it. The listed plugins are built on them — four in Go, four in Node, and
-one ([Scrapli](plugins/scrapli.md), currently **beta**) in Python, the catalog's
-first plugin on the Python SDK.
+two in Python ([Scrapli](plugins/scrapli.md) and
+[GitHub (OpenConnector)](plugins/github-oc.md), both currently **beta**).
 
 `inflowv1` is a plain NATS message protocol, so nothing stops a plugin in another
 language — the SDK is a convenience, not a requirement. If you want to port one,
@@ -228,6 +274,12 @@ cp -r "$(go env GOMODCACHE)"/github.com/\!inflowenger/go-plugin-sdk@*/skills/inf
 
 Your agent then loads it on its own whenever you ask it to build or extend a
 plugin.
+
+If your own plugin repo ships a `SKILL.md`, a `MANUAL.md`, or any other file an
+agent or a person reads to start the plugin, it links to your README's `## Run`
+section rather than restating a command — one source of truth, so the agent,
+the human, and the FloMorphic one-liner all start it the same way
+([docs/run-a-plugin.md § The rule](docs/run-a-plugin.md#the-rule)).
 
 ---
 

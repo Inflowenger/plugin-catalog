@@ -69,6 +69,12 @@ The plugin must already be provisioned in a space — that is where `PLUGIN_ID`,
 `INFRA_CRED` and `INFRA_URL` come from. See
 [docs/build-a-plugin.md § Provision](../docs/build-a-plugin.md#1-provision-the-plugin).
 
+**From FloMorphic:** define the plugin under **Extensions**, then either download
+the filled-in `.env.inflow` and run the commands above, or run the generated
+one-liner — it clones, starts, and injects `./plugin.sh` for
+`start / stop / restart / status / logs / update`. See
+[docs/run-a-plugin.md § Start from FloMorphic](../docs/run-a-plugin.md#start-from-flomorphic).
+
 ## Notes
 
 - **Local / single-node replica sets.** A single-node or local replica set (common
