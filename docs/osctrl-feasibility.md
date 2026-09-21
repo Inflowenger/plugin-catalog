@@ -4,8 +4,8 @@
 > ship its own repackaged, all-in-one osctrl. Scope: dependencies and runtime
 > requirements of the osquery → osctrl "vein" that feeds Venapce collectors.
 >
-> Status: **assessment** — feeds the [Roadmap § In progress](../README.md#in-progress)
-> entry for osctrl. Not a build spec.
+> Status: **assessment** — the plugin it describes has since shipped and is listed
+> in [the catalog](../README.md#the-catalog). Not a build spec.
 
 ---
 

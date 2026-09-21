@@ -23,9 +23,11 @@ them.
 | [ClickHouse](plugins/clickhouse.md) | `CLICKHOUSE` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [clickhouse-plugin](https://github.com/Inflowenger/clickhouse-plugin) |
 | [GitHub (OpenConnector)](plugins/github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
+| Google Workspace **(beta)** | `GOOGLE` | — | — | Any host | [@Inflowenger](https://github.com/Inflowenger) | internal |
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](plugins/mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
+| osctrl | `OSCTRL` | 4 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | internal (Venapce) |
 | [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 | [Qdrant](plugins/qdrant.md) | `QDRANT` | 7 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [qdrant-plugin](https://github.com/Inflowenger/qdrant-plugin) |
 | [Scrapli](plugins/scrapli.md) **(beta)** | `SCRAPLI` | 2 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [scrapli-plugin](https://github.com/Inflowenger/scrapli-plugin) |
@@ -83,17 +85,8 @@ hood: **[docs/run-a-plugin.md](docs/run-a-plugin.md)**.
 
 ## Roadmap
 
-Plugins already in progress and on their way into the catalog. Dates and scope
-may shift — this is where the catalog is heading, not a commitment.
-
-### In progress
-
-Being built now; expected to land in the catalog over the next few days.
-
-| Plugin | Node | Scope | Author |
-|--------|------|-------|--------|
-| osctrl | `OSCTRL` | Confirmed feasible. Manage an [osctrl](https://osctrl.net) fleet — the central control panel for osquery clients: list nodes, run queries, and manage the endpoints that have osquery installed | Inflowenger dev team |
-| Google Workspace **(in testing)** | `GOOGLE` | First release covers **Docs, Sheets, Drive, and Calendar** — **Docs, Drive, and Calendar are feature-complete and in testing**, effectively done | Inflowenger dev team |
+Plugins on their way into the catalog. Dates and scope may shift — this is
+where the catalog is heading, not a commitment.
 
 ### Feasibility study
 
