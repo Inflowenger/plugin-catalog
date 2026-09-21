@@ -27,7 +27,7 @@ them.
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](plugins/mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
-| osctrl | `OSCTRL` | 4 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | internal (Venapce) |
+| osctrl | `OSCTRL` | 4 | Go | Venapce | [@Venapce](https://github.com/Venapce) | internal (Venapce) |
 | [Postgres](plugins/postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 | [Qdrant](plugins/qdrant.md) | `QDRANT` | 7 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [qdrant-plugin](https://github.com/Inflowenger/qdrant-plugin) |
 | [Scrapli](plugins/scrapli.md) **(beta)** | `SCRAPLI` | 2 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [scrapli-plugin](https://github.com/Inflowenger/scrapli-plugin) |
