@@ -61,7 +61,7 @@ What a security-posture agent needs to see, per layer, and where we stand.
 | 2 | **Host services & config** | What does nginx/sshd/sudoers/iptables actually say? | osquery: `iptables`, `sudoers`, `crontab`, `systemd_units`, `ssh_configs`, `authorized_keys`, `augeas`, `file`/`hash`, carves | Only *merged/effective* views (`nginx -T`, `sshd -T`), nftables, audit-tool output |
 | 3 | **Network** | What is reachable **from the network**, what the firewall allows, what should exist | osquery (`listening_ports` per enrolled host), Scrapli (device CLI), NETDEVICE (study) | Unenrolled hosts, firewall policy dumps, IPAM source of truth, flows, external surface |
 | 4 | **Cloud** | What is deployed, what is public, what the provider's own posture tool flags | AWS/AZURE/GCP (study) | Everything — **priority, wave 1**; plus containers/Kubernetes |
-| 5 | **Identity** | Who exists, who is privileged, who is stale, who has no MFA | Google Workspace (beta) | AD/LDAP, Entra, Okta |
+| 5 | **Identity** | Who exists, who is privileged, who is stale, who has no MFA | [Google Workspace (OpenConnector)](../plugins/google-oc.md) (beta) | AD/LDAP, Entra, Okta |
 | 6 | **Vulnerability & findings** | Which CVEs, on which assets, which are exploited | — | Scanner results, CVE enrichment (EPSS/KEV) |
 | 7 | **Logs & telemetry** | What happened, when, from where | ClickHouse | SIEM/log search, metrics |
 | 8 | **Code & supply chain** | Repo protection, leaked secrets, vulnerable dependencies, SBOM | [GitHub (OpenConnector)](../plugins/github-oc.md) (beta) | Repo protection, alerts, org 2FA, deploy keys covered; SBOM, GitLab |
@@ -258,7 +258,7 @@ accounts, missing MFA.
 | **Entra ID** | `ENTRA` | Users, MFA registration (`userRegistrationDetails`), conditional-access policies, risky users/sign-ins, app registrations & consents, sign-in logs | Microsoft Graph (Go SDK), client-credential auth | Medium | inventory + events |
 | **Okta (OpenConnector)** | `Okta (OpenConnector)` | Users, groups, apps, policies, system log | oomol `okta` connector → `-oc` | Quick win | inventory + events |
 | **Keycloak** | `KEYCLOAK` | Realms, clients, users, roles, required actions (MFA) | Admin REST | Quick win | inventory |
-| **Google Workspace** | `GOOGLE` | *(extend the catalog plugin)* admin users, 2SV status, login audit | Admin SDK Directory + Reports | Quick, incremental | inventory + events |
+| **Google Workspace** | `GOOGLE` | *(extend [Google Workspace (OpenConnector)](../plugins/google-oc.md))* admin users, 2SV status, login audit | Admin SDK Directory + Reports | Quick, incremental | inventory + events |
 | **Vault** | `VAULT` | Auth methods, policies, leases, activity counters | REST, token | Quick win | inventory |
 
 ---

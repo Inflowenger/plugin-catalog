@@ -7,6 +7,7 @@ plugin's source, releases, and issues live in its author's own repository.
 |--------|------|--------:|-----|---------|--------|------------|
 | [GitHub (OpenConnector)](github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
+| [Google Workspace (OpenConnector)](google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
 | [Jira](jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
@@ -24,7 +25,8 @@ Every plugin here speaks `inflowv1`, the plain NATS protocol, so it is normally
 
 A **★** marks a plugin that needs more than the protocol — a **host-specific
 service** that only one platform provides — so it runs on that platform alone.
-[Gmail](gmail-oc.md), [Telegram](telegram-oc.md) and [GitHub (OpenConnector)](github-oc.md)
+[Gmail](gmail-oc.md), [Google Workspace](google-oc.md), [Telegram](telegram-oc.md) and
+[GitHub (OpenConnector)](github-oc.md)
 hold no provider credentials; they ask FloMorphic's central **Connect / OpenConnector**
 proxy to run each action,
 reaching it over the `flomorphic.svc.oc.*` NATS subjects. Those subjects are

@@ -23,7 +23,7 @@ them.
 | [ClickHouse](plugins/clickhouse.md) | `CLICKHOUSE` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [clickhouse-plugin](https://github.com/Inflowenger/clickhouse-plugin) |
 | [GitHub (OpenConnector)](plugins/github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
-| Google Workspace **(beta)** | `GOOGLE` | — | — | Any host | [@Inflowenger](https://github.com/Inflowenger) | internal |
+| [Google Workspace (OpenConnector)](plugins/google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
 | [Jira](plugins/jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [MongoDB](plugins/mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](plugins/mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
@@ -36,7 +36,8 @@ them.
 **Runs on** — every plugin here speaks `inflowv1`, so **Any host** means it runs
 on any product that implements the protocol. A **★** marks a plugin that also
 needs a **host-specific service** and therefore runs on that platform alone:
-[Gmail](plugins/gmail-oc.md), [Telegram](plugins/telegram-oc.md) and
+[Gmail](plugins/gmail-oc.md), [Google Workspace](plugins/google-oc.md),
+[Telegram](plugins/telegram-oc.md) and
 [GitHub (OpenConnector)](plugins/github-oc.md) reach FloMorphic's central
 **Connect / OpenConnector** proxy over the `flomorphic.svc.oc.*` NATS subjects,
 which only FloMorphic provides. The dependency is recorded as `hostDependency` in

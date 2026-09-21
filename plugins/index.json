@@ -58,6 +58,26 @@
       }
     },
     {
+      "slug": "google-oc",
+      "name": "Google Workspace (OpenConnector)",
+      "node": "Google Workspace (OpenConnector)",
+      "description": "Google Sheets, Docs, Drive, and Calendar as 30 per-operation actions grouped by product, acting as a Google account connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no Google credentials; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
+      "repository": "https://github.com/FloMorphic/google-office-oc-plugin",
+      "entry": "plugins/google-oc.md",
+      "author": "FloMorphic",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["storage", "utility"],
+      "actions": 30,
+      "status": "beta",
+      "hostDependency": {
+        "platform": "flomorphic",
+        "service": "Connect / OpenConnector proxy",
+        "subjects": ["flomorphic.svc.oc.*"]
+      }
+    },
+    {
       "slug": "jira",
       "name": "Jira",
       "node": "JIRA",
