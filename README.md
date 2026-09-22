@@ -84,44 +84,20 @@ hood: **[docs/run-a-plugin.md](docs/run-a-plugin.md)**.
 
 ---
 
-## Roadmap
+## Venapce — roadmap
 
-Plugins on their way into the catalog. Dates and scope may shift — this is
-where the catalog is heading, not a commitment.
+**[Venapce](docs/venapce.md)** is the security-posture product that drives most
+of this catalog's roadmap. Its plugins collect and investigate resources —
+hosts through **osquery → osctrl**, network devices through
+**[Scrapli](plugins/scrapli.md)**, code through
+[GitHub (OpenConnector)](plugins/github-oc.md) — and **FloMorphic** is its
+backend and dynamic layer: every feature is a workflow over the frames the
+plugins return.
 
-### Feasibility study
-
-Candidates under evaluation, **not yet committed**. Each is being weighed for how
-well it maps onto the `inflowv1` model and onto FloMorphic's needs, and for the
-effort it takes given the current SDKs. Items here **may be cancelled or reshaped**
-— *Effort* is a first estimate of quick win vs. hard win, not a promise.
-
-Each of these is a **collector**: the plugin's job is only to access a system and
-return data frames. The logic on top — storing frames in a doc store, evaluating
-them, running an LLM node for recommendations — is built **downstream in the
-workflow graph**, not inside the plugin.
-
-| Plugin | Node | What it would do | Approach under review | Effort | Status |
-|--------|------|------------------|-----------------------|--------|--------|
-| Network devices | `NETDEVICE` | Collect facts, interfaces, IPs, BGP/ARP/LLDP neighbours from routers, switches, and firewalls across vendors | Connection layer **[scrapligo](https://github.com/scrapli/scrapligo)** on the reference **Go SDK** — the path that ships today (SSH/NETCONF, multivendor; structured transports where the device offers them, CLI + ntc-templates where it doesn't, and we normalise to JSON). NAPALM/**scrapli** would give structured getters for free but need Python, which is the concrete requirement that drove the now-shipping **[Python SDK](docs/sdks.md)** | **Hard win** — Go now (we normalise), or ride the Python SDK | In study |
-| ManageEngine | `MANAGEENGINE` | Read/write against a ManageEngine product's REST API (ServiceDesk Plus, Endpoint Central, OpManager, or ADManager Plus) | Standard REST + API-key/OAuth — fits the Go or Node SDK directly, close to the Jira plugin. **Which product** is still open, and that decides the whole node | **Quick win** once the product is chosen | In study |
-| Cloud providers **(priority)** | `AWS` · `AZURE` · `GCP` | Pull resource inventory and deployment status, and read each cloud's native security findings — a Wiz-style trace of what's deployed and what's misconfigured. Wave 1 of the [security collectors plan](docs/security-collectors-plan.md), AWS first | First-class **Go** SDKs, credentials via the settings profile (AWS key/role · Azure service principal · GCP service-account JSON) — oomol has no AWS/Azure/GCP connector, so these are not `-oc` plugins. **The plugin only accesses and collects data frames** — ① inventory + status (CloudFormation/Config · Resource Graph · Cloud Asset Inventory), ② the cloud's *own* posture findings (**Security Hub** · **Defender for Cloud** · **Security Command Center**). The Wiz-style graph, evaluation, and recommendations are built **downstream in the workflow** (collected frames → doc store → LLM node), not in the plugin. One node per provider | **Hard win** — three providers, phased; ① is tractable, ② rides native findings | In study |
-
-> **Security collectors.** The wider plan for security-posture collectors —
-> code, cloud, logs, identity, vulnerability intel, network, threat intel — is
-> in **[docs/security-collectors-plan.md](docs/security-collectors-plan.md)**.
-> With [GitHub (OpenConnector)](plugins/github-oc.md) shipped, its wave 1 is the three clouds above plus
-> `OPENSEARCH`, `LDAP`, `VULNINTEL`, `WAZUH`, `NETBOX`; each joins this table
-> as it gets its own feasibility note. Where oomol already has a connector
-> (GitLab, Okta, Elasticsearch, Shodan, VirusTotal, …) the plugin is an `-oc`
-> node like Gmail and Telegram.
-
-### Requested
-
-Plugins people have asked for but nobody has claimed yet. Want to build one — or
-request another? Open an issue, or see **[Get your plugin listed](#get-your-plugin-listed)**.
-
-_Nothing open right now._
+**[docs/venapce.md](docs/venapce.md)** covers what is already shaped, the
+outcome of each feasibility study, the plugins under study next (the three
+clouds first), and requested plugins. The wider collector plan is in
+[docs/security-collectors-plan.md](docs/security-collectors-plan.md).
 
 ---
 

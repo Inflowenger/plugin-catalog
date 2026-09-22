@@ -6,7 +6,7 @@
 > **security + AI-agent** domain (Venapce-style workflows: collect → store →
 > evaluate → recommend).
 >
-> Status: **plan** — feeds the [Roadmap](../README.md#roadmap). Companion to
+> Status: **plan** — feeds the [Venapce roadmap](venapce.md). Companion to
 > [osctrl-feasibility.md](osctrl-feasibility.md). Not a build spec; each wave-1
 > item gets its own short feasibility note before it starts.
 
@@ -145,7 +145,7 @@ in osquery. If Wazuh is deployed, its SCA covers the CIS-audit case too (§6).
 | **External surface** | `EXTSURFACE` | DNS records (A/AAAA/MX/TXT/SPF/DMARC), subdomains from cert transparency (crt.sh), TLS check per endpoint (chain, expiry, protocol/cipher) | Go SDK + `miekg/dns`, `crypto/tls` dial, crt.sh JSON — no credentials. Shodan/Censys go through `THREATINTEL (OpenConnector)` (§9) | none | **Quick win** | inventory + findings |
 | **Flows** | *(none)* | NetFlow/sFlow/IPFIX top talkers, new external destinations | Run **goflow2** or **akvorado** → ClickHouse; query with the existing [ClickHouse](../plugins/clickhouse.md) plugin | collector process, not a plugin | **No plugin needed** | events |
 | **IDS** | *(none)* | Suricata/Zeek alerts and connection logs | Ship EVE JSON / Zeek logs to OpenSearch; read with `OPENSEARCH` (§7) | log shipper | **No plugin needed** | events |
-| Network devices | `NETDEVICE` | Facts, interfaces, neighbours | Already in [study](../README.md#feasibility-study); Scrapli ships today | — | Hard win | inventory |
+| Network devices | `NETDEVICE` | Facts, interfaces, neighbours | Already in [study](venapce.md#under-study); Scrapli ships today | — | Hard win | inventory |
 
 ---
 
@@ -464,7 +464,7 @@ Collectors feed the agent; two additions make the agent side itself cheaper:
    ([plugin entry](../plugins/github-oc.md)); finish testing against a live
    org and promote it from beta.
 2. Agree the wave-1 list and the §13 defaults.
-3. Add the wave-1 rows to the README **Feasibility study** table (Node ·
+3. Add the wave-1 rows to the **Under study** table in [venapce.md](venapce.md#under-study) (Node ·
    What it would do · Approach · Effort · Status), the same way osctrl was added.
 4. Write a one-page feasibility note per wave-1 plugin (API surface, auth,
    async shape, caps) — the osctrl note is the template.
