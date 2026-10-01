@@ -7,7 +7,7 @@ reference `inflowv1` implementation.
 Read [concepts.md](concepts.md) first if you haven't; this guide assumes you know
 what a Job and a settings profile are.
 
-**Requirements:** Go 1.26+, and a reachable Inflowenger platform (Infra + at least
+**Requirements:** Go 1.27+, and a reachable Inflowenger platform (Infra + at least
 one Fractal). To stand one up locally, follow
 [getting-started](https://github.com/Inflowenger/getting-started) — the one-liner
 brings up both stacks plus the inspector panel.

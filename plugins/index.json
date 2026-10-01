@@ -123,6 +123,36 @@
       "status": "active"
     },
     {
+      "slug": "nuclei",
+      "name": "Nuclei",
+      "node": "NUCLEI",
+      "description": "Template-based vulnerability scanning with the embedded ProjectDiscovery nuclei engine — run scans, preview and search 13,000+ templates by filter, update the catalog, and validate custom templates against targets a flow provides. Active scanning, gated by per-connection safety settings.",
+      "repository": "https://github.com/Venapce/nuclei",
+      "entry": "plugins/nuclei.md",
+      "author": "Venapce",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["devops", "utility"],
+      "actions": 6,
+      "status": "beta"
+    },
+    {
+      "slug": "playwright",
+      "name": "Playwright",
+      "node": "Playwright",
+      "description": "Drive a real Chromium, Firefox or WebKit browser from a flow — open and scrape JavaScript-rendered pages, screenshot, print to PDF, evaluate scripts, and run a scripted or recorded browser session as one node.",
+      "repository": "https://github.com/Venapce/playwright",
+      "entry": "plugins/playwright.md",
+      "author": "Venapce",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["utility", "protocol"],
+      "actions": 5,
+      "status": "beta"
+    },
+    {
       "slug": "postgres",
       "name": "Postgres",
       "node": "POSTGRES",

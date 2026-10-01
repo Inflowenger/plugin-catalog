@@ -8,7 +8,7 @@ convenience — it wires the subjects, marshals the envelopes, and gives you a
 
 | Language | Package | Status |
 |----------|---------|--------|
-| **Go** | [`github.com/Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable.** The reference `inflowv1` implementation and the mainstream path — when the protocol and an SDK disagree, this one is right. v0.1.7, Go 1.26+. |
+| **Go** | [`github.com/Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable.** The reference `inflowv1` implementation and the mainstream path — when the protocol and an SDK disagree, this one is right. v0.1.7, Go 1.27+. |
 | **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) ([repo](https://github.com/Inflowenger/node-plugin-sdk)) | **Stable.** v0.1.1 on npm, Node 18+. Kept in step with the Go SDK, which stays the normative reference. Powers [Gmail (OpenConnector)](../plugins/gmail-oc.md). |
 | **Python** | [`inflowenger-plugin-sdk`](https://pypi.org/project/inflowenger-plugin-sdk/) ([repo](https://github.com/Inflowenger/py-plugin-sdk)) | v0.1.2 on PyPI, Python 3.11+. The Python port of the Go SDK, which stays the normative reference. |
 

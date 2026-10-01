@@ -47,7 +47,7 @@ changes per language.
 
 ### Go
 
-Requirements: Go 1.26+. A `main` package at the repository root.
+Requirements: Go 1.27+. A `main` package at the repository root.
 
 ```bash
 git clone https://github.com/<you>/<repo>-plugin
