@@ -8,9 +8,9 @@ convenience — it wires the subjects, marshals the envelopes, and gives you a
 
 | Language | Package | Status |
 |----------|---------|--------|
-| **Go** | [`github.com/Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable.** The reference `inflowv1` implementation and the mainstream path — when the protocol and an SDK disagree, this one is right. v0.1.7, Go 1.27+. |
-| **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) ([repo](https://github.com/Inflowenger/node-plugin-sdk)) | **Stable.** v0.1.1 on npm, Node 18+. Kept in step with the Go SDK, which stays the normative reference. Powers [Gmail (OpenConnector)](../plugins/gmail-oc.md). |
-| **Python** | [`inflowenger-plugin-sdk`](https://pypi.org/project/inflowenger-plugin-sdk/) ([repo](https://github.com/Inflowenger/py-plugin-sdk)) | v0.1.2 on PyPI, Python 3.11+. The Python port of the Go SDK, which stays the normative reference. |
+| **Go** | [`github.com/Inflowenger/go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) | **Stable.** The reference `inflowv1` implementation and the mainstream path — when the protocol and an SDK disagree, this one is right. v0.2.4, Go 1.27+. |
+| **Node.js / TypeScript** | [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) ([repo](https://github.com/Inflowenger/node-plugin-sdk)) | **Stable.** v0.1.9 on npm, Node 18+. Kept in step with the Go SDK, which stays the normative reference. Powers [Gmail (OpenConnector)](../plugins/gmail-oc.md). |
+| **Python** | [`inflowenger-plugin-sdk`](https://pypi.org/project/inflowenger-plugin-sdk/) ([repo](https://github.com/Inflowenger/py-plugin-sdk)) | v0.1.5 on PyPI, Python 3.11+. The Python port of the Go SDK, which stays the normative reference. |
 
 All three are available today. Go is the reference implementation, and Node.js
 (`npm i @inflowenger/node-plugin-sdk`) and Python (`pip install inflowenger-plugin-sdk`)
@@ -92,6 +92,16 @@ verbatim and the runtime rewrites them. Just don't validate paths against the
 JSON path grammar before sending — `$this.a.b` is not valid JSON path and must
 survive the trip.
 
+### The signal port (optional)
+
+The runtime also publishes, one-way, on `inflow.plugin.<PLUGIN_ID>.proc` when it
+stops attending a node process, carrying `{conclusion, jobId}`. An SDK exposes it
+as an **optional** handler registered before start — Go `OnSignal`, Node
+`onSignal`, Python `on_signal` — subscribing to the wildcard
+`inflow.plugin.<PLUGIN_ID>.>` so future signal kinds reach it. It is a `publish`:
+never reply. Ignoring it is valid, since a stopped process does not stop the job
+(see [build-a-plugin.md § 5b](build-a-plugin.md#5b-stop-work-when-the-process-ends-optional)).
+
 ### Ship an Agent Skill with it
 
 The Go SDK ships
@@ -114,6 +124,8 @@ should do the same, in its own language's idioms.
 - [ ] Typed request casting idiomatic for the language.
 - [ ] Meta RPCs may return a bare array, not only the `{data, error}` envelope.
 - [ ] Two runnable examples — one adapter (external I/O), one pure transform.
+- [ ] Optional signal handler (`OnSignal`) on the `inflow.plugin.<PLUGIN_ID>.>`
+      wildcard, with `Succeeded()` / `Canceled()` helpers on the conclusion.
 - [ ] Docs mirroring the Go set, plus an Agent Skill.
 
 Porting one? Open an issue on the catalog — it should be listed here.

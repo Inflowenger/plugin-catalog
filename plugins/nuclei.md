@@ -71,6 +71,9 @@ one-liner — it clones, starts, and injects `./plugin.sh` for
 
 ## Notes
 
+- A cancelled node stops its in-flight scan: the plugin registers an `OnSignal`
+  handler and aborts the job when the runtime reports a cancel / timeout.
+
 - The first scan needs a template catalog: run **Update Templates** once, or point
   `templatesDir` at an existing nuclei-templates checkout.
 - The binary embeds the nuclei engine (~150–200 MB); no external `nuclei` binary

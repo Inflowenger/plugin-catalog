@@ -214,6 +214,52 @@ summary — a flow can read fields out of it, but not out of prose.
 
 ---
 
+## 5b. Stop work when the process ends (optional)
+
+The runtime broadcasts on `inflow.plugin.<PLUGIN_ID>.proc` whenever it stops
+attending a node process — `done`, `flow_stop_by_user`, `timeout`, and so on —
+with the `jobId` it was about. `OnSignal` subscribes to that port. Register it
+**before `Start()`**.
+
+```go
+var inflight sync.Map // jobId -> context.CancelFunc
+
+p.OnSignal(func(sig sdkv1.Signal) {
+    if !sig.Conclusion.Canceled() { // stopped by user, timeout, idle
+        return                      // done / next / failed — nothing to abort
+    }
+    if cancel, ok := inflight.LoadAndDelete(sig.JobId); ok {
+        cancel.(context.CancelFunc)()
+    }
+})
+
+p.AddAction(sdkv1.Action{Method: "long.export", RequestHandler: func(job sdkv1.Job) {
+    ctx, cancel := context.WithCancel(context.Background())
+    inflight.Store(job.JobId, cancel)
+    defer func() { cancel(); inflight.Delete(job.JobId) }()
+    // … work with ctx …
+}})
+```
+
+**Most plugins should skip this.** A stopped process does *not* stop its job on
+purpose: a later process on the same node can pick up where it left off (the
+runtime hands the previous `jobId` back in `_registry`). Register a handler only
+for work that must not outlive the process — a stream to close, an upstream call
+to abort, a lock or reservation to release.
+
+- Signals arrive for **every** ending, including `done`; filter on
+  `sig.Conclusion` (`Succeeded()` / `Canceled()`).
+- Once a signal is out, the runtime no longer listens on that job's command
+  subjects — a late `Progress` or `Done` finds no responder.
+- Handlers run on their own goroutine and a panic is recovered and logged.
+- `OnSignal(nil)` just logs the port, handy in development. Node: `onSignal`,
+  Python: `on_signal`. Used by the [Nuclei](../plugins/nuclei.md) plugin to abort
+  an in-flight scan.
+
+Full reference: [jobs-and-commands.md § Signals](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/jobs-and-commands.md#signals--when-the-runtime-ends-a-process).
+
+---
+
 ## 6. Give the action a form
 
 Without a form, users hand-write JSON. With one, they get a real drawer.
@@ -507,6 +553,8 @@ inspector panel while a flow executes your node.
 
 - [ ] `.env.inflow` is gitignored; `.env.inflow.example` is committed.
 - [ ] Every handler path ends in exactly one `Done` / `DoneWithError`.
+- [ ] If the work holds a stream, lock or upstream request, an `OnSignal` handler
+      aborts it on cancellation (otherwise leave it out).
 - [ ] No credential appears in any action form, log line, or committed output.
 - [ ] Errors name the fix, not just the symptom.
 - [ ] Every action has a form with titles and `required` set.

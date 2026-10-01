@@ -75,6 +75,11 @@ Everything a plugin exposes is one of these, and each maps to a NATS subject.
 | 5 | **Handlers** | `inflow.v1.<PLUGIN_ID>.<ACTION>` | The work. Spawns a **Job**. |
 | 6 | **Meta RPCs** | `inflow.v1.<PLUGIN_ID>.<METHOD>` | Synchronous helpers for building the drawer. No job, no progress. |
 
+A seventh, **optional** piece runs the other way: the **signal port**
+(`inflow.plugin.<PLUGIN_ID>.proc`), a one-way broadcast telling the plugin that a
+node process ended and how. A plugin that ignores it behaves as it always did; see
+[build-a-plugin.md § 5b](build-a-plugin.md#5b-stop-work-when-the-process-ends-optional).
+
 The normative subject-by-subject reference is the SDK's
 [protocol-inflowv1.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/protocol-inflowv1.md).
 
