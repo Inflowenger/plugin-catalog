@@ -39,6 +39,12 @@ The binding is recorded as a `hostDependency` object in
 [`index.json`](index.json) (`platform`, `service`, and the `subjects` it uses).
 Omit it and the plugin is treated as portable.
 
+Building one of these? The **`-oc`** suffix marks a plugin whose actions are run
+by **OpenConnector**, and they are built from the service's live action catalog
+rather than from the provider's API docs —
+[`skills/oc-plugin`](../skills/oc-plugin/SKILL.md) is the procedure, for a human
+or a coding agent.
+
 ## Running one
 
 Every entry's **Install** section is the same shape: clone, copy

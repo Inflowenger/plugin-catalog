@@ -109,6 +109,11 @@ The Go SDK ships
 so AI coding agents can use it correctly without being handed the docs. A new SDK
 should do the same, in its own language's idioms.
 
+Skills that are about a *kind* of plugin rather than a language live here instead,
+under [`skills/`](../skills/) — currently
+[`oc-plugin`](../skills/oc-plugin/SKILL.md), for plugins backed by OpenConnector.
+They layer on the SDK's skill, which stays the authority on the API.
+
 ---
 
 ## Porting checklist

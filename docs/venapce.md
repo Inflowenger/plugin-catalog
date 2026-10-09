@@ -25,7 +25,9 @@
 - **Studies that finished.** [osctrl](osctrl-feasibility.md) → shipped.
   [GitHub (OpenConnector)](github-oc-feasibility.md) → shipped (beta). The
   network-device study's need for Python drove the **Python SDK** → Scrapli
-  shipped (beta) on it.
+  shipped (beta) on it. [Joern, CodeQL & Semgrep](sast-feasibility.md) →
+  neither Joern nor CodeQL; the SAST slot goes to **`SEMGREP`** (engine
+  embedded, rules **not** bundled — they are licensed).
 - **Next.** The three clouds (`AWS` · `AZURE` · `GCP`, AWS first) lead wave 1
   of the [security collectors plan](security-collectors-plan.md), followed by
   `OPENSEARCH`, `LDAP`, `VULNINTEL`, `WAZUH` and `NETBOX`.
@@ -77,6 +79,7 @@
 | [osctrl](osctrl-feasibility.md) | Can Venapce reach osquery hosts through osctrl, and should it ship its own osctrl? | **Plugin shipped** (Track A): four actions on `osctrl-api` with token auth and an async run → poll → collect flow. **"Easy osctrl"** (Track B), a repackaged all-in-one image, is a separate product track and still open. `osctrl-tls` must remain publicly reachable over TLS by every agent |
 | Network devices (`NETDEVICE`) | Which connection layer for multivendor routers, switches and firewalls? | NAPALM/scrapli's structured getters needed Python, and that requirement drove the **[Python SDK](sdks.md)**, now on PyPI. **[Scrapli](../plugins/scrapli.md) shipped (beta)** on it. A full normalised `NETDEVICE` node is still under study (below) |
 | [GitHub (OpenConnector)](github-oc-feasibility.md) | Can source-code posture come through oomol's connector? | **Shipped (beta).** The provider proxy forwards the security endpoints. The org lives on the settings profile. Built on the Python SDK. GitLab follows on the same code path |
+| [Joern, CodeQL & Semgrep](sast-feasibility.md) | Can source-code analysis (SAST) ship as a plugin with embedded dependencies and a near-zero-knowledge install? | **Neither, as asked.** Joern embeds far more cheaply than its 1.8 GB distribution suggests — **143 MB of jars** for eight languages, frontends verified running from a bare classpath — but its console layer is install-bound, an embed needs a **JVM SDK that does not exist**, and it ships only **58 stock queries**, none for Python/JS/Go/C#/Ruby. CodeQL is ruled out on **licence**: no private-code or CI/CD use without paid GitHub Advanced Security — where a customer holds GHAS, [GitHub (OpenConnector)](../plugins/github-oc.md) already reads the alerts. The slot goes to **`SEMGREP`** — Python SDK (`pip` embeds the engine) or **Opengrep** on Go (one 46.5 MB signed static binary). Its catch is the opposite of Joern's: the engines are LGPL-2.1 but `semgrep-rules` is **licence-encumbered** (Semgrep Rules License v1.0; the pre-fork set adds Commons Clause), so the plugin ships the engine and a rule *loader*, never the rules — nuclei's template-catalog shape. Joern stays on the roadmap as an **expert** node, not a scanner |
 | [Security collectors](security-collectors-plan.md) | What does a security-posture agent need beyond osquery? | A layered plan covering nine layers, three frame kinds and three waves, with shared conventions. Wave 1 is listed below |
 
 ---

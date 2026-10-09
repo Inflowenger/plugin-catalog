@@ -3,12 +3,15 @@
 The index of **Plugin nodes** for [Inflowenger](https://github.com/Inflowenger/getting-started)
 — and the knowledge base for building your own.
 
-Two things live here:
+Three things live here:
 
 - **[`plugins/`](plugins/)** — the catalog. One entry per plugin, each pointing at
   the plugin's own repository. Plugins are not hosted here; their authors own them.
 - **[`docs/`](docs/)** — everything a plugin developer needs: the mental model, a
   build-from-zero guide, the SDK matrix, and how to publish and get listed.
+- **[`skills/`](skills/)** — the same knowledge as agent skills, for AI coding
+  agents. [`oc-plugin`](skills/oc-plugin/SKILL.md) covers building an **`-oc`**
+  plugin against oomol OpenConnector.
 
 Products built on Inflowenger — such as **FloMorphic** — load these plugins as
 extensions. A plugin written once against the `inflowv1` protocol runs on any of

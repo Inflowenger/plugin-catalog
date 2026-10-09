@@ -578,5 +578,6 @@ Then [publish it and get it listed](publishing.md).
 | What else can a Job do? | [jobs-and-commands.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/jobs-and-commands.md) |
 | How do I build a richer form? | [form-builder.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/form-builder.md) |
 | A field depends on another field, or on the account | [dependent-fields.md](dependent-fields.md) |
+| The service is already in oomol OpenConnector — build an `-oc` plugin | [skills/oc-plugin](../skills/oc-plugin/SKILL.md) |
 | Show me a full worked example | [examples.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/docs/examples.md) · [the Jira plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | Recipe-by-recipe walkthrough | [cookbook.md](https://github.com/Inflowenger/go-plugin-sdk/blob/main/cookbook.md) |
