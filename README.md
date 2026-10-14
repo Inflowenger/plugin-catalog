@@ -23,6 +23,7 @@ them.
 
 | Plugin | Node | Actions | SDK | Runs on | Author | Repository |
 |--------|------|--------:|-----|---------|--------|------------|
+| [Claude](plugins/claude.md) **(beta)** | `CLAUDE` | 1 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [claude-plugin](https://github.com/Inflowenger/claude-plugin) |
 | [ClickHouse](plugins/clickhouse.md) | `CLICKHOUSE` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [clickhouse-plugin](https://github.com/Inflowenger/clickhouse-plugin) |
 | [GitHub (OpenConnector)](plugins/github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
