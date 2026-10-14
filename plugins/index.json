@@ -3,19 +3,19 @@
   "version": 1,
   "plugins": [
     {
-      "slug": "claude",
-      "name": "Claude",
-      "node": "CLAUDE",
+      "slug": "claude-agent",
+      "name": "Claude Agent",
+      "node": "CLAUDE AGENT",
       "description": "Runs Claude as an agent on the plugin's own host \u2014 a durable Claude Code session per call site, structured answers from a JSON Schema, and a \"Needs a human\" outbound port that parks the session on a question and resumes it with the person's reply.",
-      "repository": "https://github.com/Inflowenger/claude-plugin",
-      "entry": "plugins/claude.md",
+      "repository": "https://github.com/Inflowenger/claude-agent-plugin",
+      "entry": "plugins/claude-agent.md",
       "author": "Inflowenger",
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.1.0",
       "categories": ["ai", "utility"],
       "actions": 1,
-      "status": "beta"
+      "status": "active"
     },
     {
       "slug": "clickhouse",

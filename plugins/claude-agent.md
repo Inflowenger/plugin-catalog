@@ -1,27 +1,32 @@
-# Claude
+# Claude Agent
 
 > Runs Claude as an agent on the plugin's own host — one durable Claude Code
 > session per call site, with a port for the questions it cannot answer alone.
 
 | | |
 |---|---|
-| **Repository** | https://github.com/Inflowenger/claude-plugin |
-| **Node name** | `CLAUDE` |
+| **Repository** | https://github.com/Inflowenger/claude-agent-plugin |
+| **Node name** | `CLAUDE AGENT` |
 | **Author** | [@Inflowenger](https://github.com/Inflowenger) |
 | **SDK** | Node — [`@inflowenger/node-plugin-sdk`](https://www.npmjs.com/package/@inflowenger/node-plugin-sdk) (`inflowv1`) |
 | **Version** | v0.1.0 |
 | **Categories** | `ai`, `utility` |
 | **Runs on** | Any `inflowv1` host |
 | **License** | See repository |
-| **Status** | Beta |
+| **Status** | Active |
 
 ## What it does
 
-Adds a `CLAUDE` node that gives a flow a coding agent: it reads and writes files,
+Adds a `CLAUDE AGENT` node that gives a flow a coding agent: it reads and writes files,
 runs commands, and answers in prose or in a schema you define. It is built on
 [`@anthropic-ai/claude-agent-sdk`](https://www.npmjs.com/package/@anthropic-ai/claude-agent-sdk)
 and drives the Claude Code installed on the plugin's host, so the agent works in
 a real working tree on real disk rather than through an API wrapper.
+
+It is not an LLM node. A model node sends a prompt and returns a completion; this
+one hands work to an agent that decides its own steps, uses tools, keeps a
+session between runs, and can come back with a question. Reach for it when the
+task is *do this in this repo*, not *answer this*.
 
 Two things separate it from a normal request/response plugin.
 
@@ -45,7 +50,7 @@ pattern.
 
 Turn on **Return structured data** and give the node a JSON Schema, and the
 turn's answer conforms to it — committed as `output`, so downstream nodes read
-`{{$.claude.output.verdict}}` instead of parsing prose.
+`{{$.claudeAgent.output.verdict}}` instead of parsing prose.
 
 ## Actions
 
@@ -95,8 +100,8 @@ comes from running `claude` once on the host.
 ## Install
 
 ```bash
-git clone https://github.com/Inflowenger/claude-plugin
-cd claude-plugin
+git clone https://github.com/Inflowenger/claude-agent-plugin
+cd claude-agent-plugin
 cp .env.inflow.example .env.inflow   # PLUGIN_ID / INFRA_CRED / INFRA_URL
 npm install && npm run build && npm start
 ```

@@ -5,7 +5,7 @@ plugin's source, releases, and issues live in its author's own repository.
 
 | Plugin | Node | Actions | SDK | Runs on | Author | Repository |
 |--------|------|--------:|-----|---------|--------|------------|
-| [Claude](claude.md) **(beta)** | `CLAUDE` | 1 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [claude-plugin](https://github.com/Inflowenger/claude-plugin) |
+| [Claude Agent](claude-agent.md) | `CLAUDE AGENT` | 1 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [claude-agent-plugin](https://github.com/Inflowenger/claude-agent-plugin) |
 | [GitHub (OpenConnector)](github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Google Workspace (OpenConnector)](google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
