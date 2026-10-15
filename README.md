@@ -25,6 +25,7 @@ them.
 |--------|------|--------:|-----|---------|--------|------------|
 | [Claude Agent](plugins/claude-agent.md) | `CLAUDE AGENT` | 1 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [claude-agent-plugin](https://github.com/Inflowenger/claude-agent-plugin) |
 | [ClickHouse](plugins/clickhouse.md) | `CLICKHOUSE` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [clickhouse-plugin](https://github.com/Inflowenger/clickhouse-plugin) |
+| [Codex Agent](plugins/codex-agent.md) **(beta)** | `CODEX AGENT` | 1 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [codex-agent-plugin](https://github.com/Inflowenger/codex-agent-plugin) |
 | [GitHub (OpenConnector)](plugins/github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](plugins/gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Google Workspace (OpenConnector)](plugins/google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
@@ -225,9 +226,10 @@ Then go deep in the SDK's own docs — they are the normative reference:
 | **Python** | [`inflowenger-plugin-sdk`](https://pypi.org/project/inflowenger-plugin-sdk/) | **Beta** — first release on PyPI, Python 3.11+. The Python port of the Go SDK ([`Inflowenger/py-plugin-sdk`](https://github.com/Inflowenger/py-plugin-sdk)). |
 
 All three SDKs are available today; Go is the reference, and Node.js and Python
-follow it. The listed plugins are built on them — four in Go, four in Node, and
-two in Python ([Scrapli](plugins/scrapli.md) and
-[GitHub (OpenConnector)](plugins/github-oc.md), both currently **beta**).
+follow it. The listed plugins are built on them — six in Go, six in Node, and
+three in Python ([Scrapli](plugins/scrapli.md),
+[GitHub (OpenConnector)](plugins/github-oc.md) and
+[Codex Agent](plugins/codex-agent.md), all three currently **beta**).
 
 `inflowv1` is a plain NATS message protocol, so nothing stops a plugin in another
 language — the SDK is a convenience, not a requirement. If you want to port one,

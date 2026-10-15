@@ -33,6 +33,21 @@
       "status": "active"
     },
     {
+      "slug": "codex-agent",
+      "name": "Codex Agent",
+      "node": "CODEX AGENT",
+      "description": "Runs OpenAI Codex as an agent on the plugin's own host \u2014 a durable Codex thread per call site, fenced by the OS sandbox (Seatbelt/bubblewrap), structured answers from a JSON Schema, and a \"Needs a human\" outbound port that parks the thread on an approval and resumes it with the person's decision.",
+      "repository": "https://github.com/Inflowenger/codex-agent-plugin",
+      "entry": "plugins/codex-agent.md",
+      "author": "Inflowenger",
+      "sdk": "python",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["ai", "utility"],
+      "actions": 1,
+      "status": "beta"
+    },
+    {
       "slug": "github-oc",
       "name": "GitHub (OpenConnector)",
       "node": "GitHub (OpenConnector)",
