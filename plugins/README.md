@@ -11,6 +11,7 @@ plugin's source, releases, and issues live in its author's own repository.
 | [Gmail (OpenConnector)](gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Google Workspace (OpenConnector)](google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
 | [Jira](jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
+| [Microsoft SQL Server](mssql.md) | `MSSQL` | 4 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mssql-plugin](https://github.com/Inflowenger/mssql-plugin) |
 | [MongoDB](mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
 | [Nuclei](nuclei.md) **(beta)** | `NUCLEI` | 6 | Go | Any host | [@Venapce](https://github.com/Venapce) | [nuclei](https://github.com/Venapce/nuclei) |

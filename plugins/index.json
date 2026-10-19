@@ -138,6 +138,21 @@
       "status": "active"
     },
     {
+      "slug": "mssql",
+      "name": "Microsoft SQL Server",
+      "node": "MSSQL",
+      "description": "Read, write, insert/upsert records, and create-table-if-not-exists against Microsoft SQL Server and Azure SQL, with @p1-bound parameters and double-brace $.path mustache tokens pulled from the flow. Go sibling of the Postgres plugin.",
+      "repository": "https://github.com/Inflowenger/mssql-plugin",
+      "entry": "plugins/mssql.md",
+      "author": "Inflowenger",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": ["database"],
+      "actions": 4,
+      "status": "active"
+    },
+    {
       "slug": "mysql",
       "name": "MySQL",
       "node": "MYSQL",
