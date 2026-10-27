@@ -4,7 +4,7 @@
 
 | | |
 |---|---|
-| **Repository** | https://github.com/Inflowenger/zvec-plugin |
+| **Repository** | https://github.com/Inflowenger/zvec-ai-plugin |
 | **Node name** | `ZVEC` |
 | **Author** | [@Inflowenger](https://github.com/Inflowenger) |
 | **SDK** | Go — [`go-plugin-sdk`](https://github.com/Inflowenger/go-plugin-sdk) (`inflowv1`) |
@@ -99,8 +99,8 @@ and a second plugin process pointed at it will fail on the engine's lock.
 ## Install
 
 ```bash
-git clone https://github.com/Inflowenger/zvec-plugin
-cd zvec-plugin
+git clone https://github.com/Inflowenger/zvec-ai-plugin
+cd zvec-ai-plugin
 cp .env.inflow.example .env.inflow   # PLUGIN_ID / INFRA_CRED / INFRA_URL
 ./scripts/fetch-zvec-lib.sh          # the zvec engine for this platform
 go run .

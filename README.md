@@ -40,7 +40,7 @@ them.
 | [Qdrant](plugins/qdrant.md) | `QDRANT` | 7 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [qdrant-plugin](https://github.com/Inflowenger/qdrant-plugin) |
 | [Scrapli](plugins/scrapli.md) **(beta)** | `SCRAPLI` | 2 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [scrapli-plugin](https://github.com/Inflowenger/scrapli-plugin) |
 | [Telegram (OpenConnector)](plugins/telegram-oc.md) | `Telegram (OpenConnector)` | 5 | Go | FloMorphic ★ | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [telegram-oc-plugin](https://github.com/mehdi-shokohi/telegram-oc-plugin) |
-| [zvec](plugins/zvec.md) **(beta)** | `ZVEC` | 12 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [zvec-plugin](https://github.com/Inflowenger/zvec-plugin) |
+| [zvec](plugins/zvec.md) **(beta)** | `ZVEC` | 12 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [zvec-ai-plugin](https://github.com/Inflowenger/zvec-ai-plugin) |
 
 **Runs on** — every plugin here speaks `inflowv1`, so **Any host** means it runs
 on any product that implements the protocol. A **★** marks a plugin that also

@@ -316,7 +316,7 @@
       "name": "zvec",
       "node": "ZVEC",
       "description": "Vector, full-text and hybrid search on the embedded zvec engine \u2014 no server to run, a collection is a directory on the plugin's own host. Fuses a vector and a full-text ranking by RRF or weights, and can embed text via OpenAI, Gemini, Cohere or a custom endpoint.",
-      "repository": "https://github.com/Inflowenger/zvec-plugin",
+      "repository": "https://github.com/Inflowenger/zvec-ai-plugin",
       "entry": "plugins/zvec.md",
       "author": "Inflowenger",
       "sdk": "go",
