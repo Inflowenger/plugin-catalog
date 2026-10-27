@@ -13,7 +13,10 @@
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["ai", "utility"],
+      "categories": [
+        "ai",
+        "utility"
+      ],
       "actions": 1,
       "status": "active"
     },
@@ -28,7 +31,10 @@
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["database", "analytics"],
+      "categories": [
+        "database",
+        "analytics"
+      ],
       "actions": 4,
       "status": "active"
     },
@@ -43,7 +49,10 @@
       "sdk": "python",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["ai", "utility"],
+      "categories": [
+        "ai",
+        "utility"
+      ],
       "actions": 1,
       "status": "beta"
     },
@@ -51,74 +60,90 @@
       "slug": "github-oc",
       "name": "GitHub (OpenConnector)",
       "node": "GitHub (OpenConnector)",
-      "description": "Read-only GitHub collector — repositories, activity, search, and the security surface (Dependabot / secret-scanning / code-scanning alerts, branch protection & rulesets, org members & 2FA, deploy keys / webhooks / Actions settings) — as a GitHub account connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no GitHub token; uses oomol's curated actions plus its provider proxy over the flomorphic.svc.oc.* NATS subjects. The catalog's first Python -oc plugin.",
+      "description": "Read-only GitHub collector \u2014 repositories, activity, search, and the security surface (Dependabot / secret-scanning / code-scanning alerts, branch protection & rulesets, org members & 2FA, deploy keys / webhooks / Actions settings) \u2014 as a GitHub account connected centrally in FloMorphic \u2192 Connect (OpenConnector / oomol). Holds no GitHub token; uses oomol's curated actions plus its provider proxy over the flomorphic.svc.oc.* NATS subjects. The catalog's first Python -oc plugin.",
       "repository": "https://github.com/FloMorphic/github-oc",
       "entry": "plugins/github-oc.md",
       "author": "FloMorphic",
       "sdk": "python",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["devops"],
+      "categories": [
+        "devops"
+      ],
       "actions": 13,
       "status": "beta",
       "hostDependency": {
         "platform": "flomorphic",
         "service": "Connect / OpenConnector proxy",
-        "subjects": ["flomorphic.svc.oc.*"]
+        "subjects": [
+          "flomorphic.svc.oc.*"
+        ]
       }
     },
     {
       "slug": "gmail-oc",
       "name": "Gmail (OpenConnector)",
       "node": "Gmail (OpenConnector)",
-      "description": "Send, search, read, and label Gmail messages as an account connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no Google credentials; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
+      "description": "Send, search, read, and label Gmail messages as an account connected centrally in FloMorphic \u2192 Connect (OpenConnector / oomol). Holds no Google credentials; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
       "repository": "https://github.com/FloMorphic/gmail-oc-plugin",
       "entry": "plugins/gmail-oc.md",
       "author": "FloMorphic",
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.2.0",
-      "categories": ["communication"],
+      "categories": [
+        "communication"
+      ],
       "actions": 4,
       "status": "active",
       "hostDependency": {
         "platform": "flomorphic",
         "service": "Connect / OpenConnector proxy",
-        "subjects": ["flomorphic.svc.oc.*"]
+        "subjects": [
+          "flomorphic.svc.oc.*"
+        ]
       }
     },
     {
       "slug": "google-oc",
       "name": "Google Workspace (OpenConnector)",
       "node": "Google Workspace (OpenConnector)",
-      "description": "Google Sheets, Docs, Drive, and Calendar as 30 per-operation actions grouped by product, acting as a Google account connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no Google credentials; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
+      "description": "Google Sheets, Docs, Drive, and Calendar as 30 per-operation actions grouped by product, acting as a Google account connected centrally in FloMorphic \u2192 Connect (OpenConnector / oomol). Holds no Google credentials; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
       "repository": "https://github.com/FloMorphic/google-office-oc-plugin",
       "entry": "plugins/google-oc.md",
       "author": "FloMorphic",
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["storage", "utility"],
+      "categories": [
+        "storage",
+        "utility"
+      ],
       "actions": 30,
       "status": "beta",
       "hostDependency": {
         "platform": "flomorphic",
         "service": "Connect / OpenConnector proxy",
-        "subjects": ["flomorphic.svc.oc.*"]
+        "subjects": [
+          "flomorphic.svc.oc.*"
+        ]
       }
     },
     {
       "slug": "jira",
       "name": "Jira",
       "node": "JIRA",
-      "description": "Everyday Jira REST operations — create, search, transition, comment, link, log work, attach — against Jira Cloud and Server/Data Center.",
+      "description": "Everyday Jira REST operations \u2014 create, search, transition, comment, link, log work, attach \u2014 against Jira Cloud and Server/Data Center.",
       "repository": "https://github.com/mehdi-shokohi/jira-plugin",
       "entry": "plugins/jira.md",
       "author": "mehdi-shokohi",
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["issue-tracking", "devops"],
+      "categories": [
+        "issue-tracking",
+        "devops"
+      ],
       "actions": 14,
       "status": "active"
     },
@@ -133,7 +158,9 @@
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["database"],
+      "categories": [
+        "database"
+      ],
       "actions": 4,
       "status": "active"
     },
@@ -148,7 +175,9 @@
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["database"],
+      "categories": [
+        "database"
+      ],
       "actions": 4,
       "status": "active"
     },
@@ -163,7 +192,9 @@
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["database"],
+      "categories": [
+        "database"
+      ],
       "actions": 4,
       "status": "active"
     },
@@ -171,14 +202,17 @@
       "slug": "nuclei",
       "name": "Nuclei",
       "node": "NUCLEI",
-      "description": "Template-based vulnerability scanning with the embedded ProjectDiscovery nuclei engine — run scans, preview and search 13,000+ templates by filter, update the catalog, and validate custom templates against targets a flow provides. Active scanning, gated by per-connection safety settings.",
+      "description": "Template-based vulnerability scanning with the embedded ProjectDiscovery nuclei engine \u2014 run scans, preview and search 13,000+ templates by filter, update the catalog, and validate custom templates against targets a flow provides. Active scanning, gated by per-connection safety settings.",
       "repository": "https://github.com/Venapce/nuclei",
       "entry": "plugins/nuclei.md",
       "author": "Venapce",
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["devops", "utility"],
+      "categories": [
+        "devops",
+        "utility"
+      ],
       "actions": 6,
       "status": "beta"
     },
@@ -186,14 +220,17 @@
       "slug": "playwright",
       "name": "Playwright",
       "node": "Playwright",
-      "description": "Drive a real Chromium, Firefox or WebKit browser from a flow — open and scrape JavaScript-rendered pages, screenshot, print to PDF, evaluate scripts, and run a scripted or recorded browser session as one node.",
+      "description": "Drive a real Chromium, Firefox or WebKit browser from a flow \u2014 open and scrape JavaScript-rendered pages, screenshot, print to PDF, evaluate scripts, and run a scripted or recorded browser session as one node.",
       "repository": "https://github.com/Venapce/playwright",
       "entry": "plugins/playwright.md",
       "author": "Venapce",
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["utility", "protocol"],
+      "categories": [
+        "utility",
+        "protocol"
+      ],
       "actions": 5,
       "status": "beta"
     },
@@ -208,7 +245,9 @@
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["database"],
+      "categories": [
+        "database"
+      ],
       "actions": 3,
       "status": "active"
     },
@@ -216,14 +255,17 @@
       "slug": "qdrant",
       "name": "Qdrant",
       "node": "QDRANT",
-      "description": "Vector search and collection management on Qdrant — create/list collections, upsert points, nearest-neighbour search, retrieve, scroll, and delete. Talks directly to Qdrant's REST API and can embed plain text via OpenAI, Gemini, Cohere, or a custom OpenAI-compatible endpoint.",
+      "description": "Vector search and collection management on Qdrant \u2014 create/list collections, upsert points, nearest-neighbour search, retrieve, scroll, and delete. Talks directly to Qdrant's REST API and can embed plain text via OpenAI, Gemini, Cohere, or a custom OpenAI-compatible endpoint.",
       "repository": "https://github.com/Inflowenger/qdrant-plugin",
       "entry": "plugins/qdrant.md",
       "author": "Inflowenger",
       "sdk": "node",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["database", "ai"],
+      "categories": [
+        "database",
+        "ai"
+      ],
       "actions": 7,
       "status": "active"
     },
@@ -231,14 +273,17 @@
       "slug": "scrapli",
       "name": "Scrapli",
       "node": "SCRAPLI",
-      "description": "Run CLI commands and push configuration to network devices — Cisco IOS-XE / NX-OS / IOS-XR, Arista EOS, Juniper JunOS — over SSH/Telnet via scrapli, with optional TextFSM (ntc-templates) parsing. The catalog's first Python-SDK plugin.",
+      "description": "Run CLI commands and push configuration to network devices \u2014 Cisco IOS-XE / NX-OS / IOS-XR, Arista EOS, Juniper JunOS \u2014 over SSH/Telnet via scrapli, with optional TextFSM (ntc-templates) parsing. The catalog's first Python-SDK plugin.",
       "repository": "https://github.com/Inflowenger/scrapli-plugin",
       "entry": "plugins/scrapli.md",
       "author": "Inflowenger",
       "sdk": "python",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["devops", "utility"],
+      "categories": [
+        "devops",
+        "utility"
+      ],
       "actions": 2,
       "status": "beta"
     },
@@ -246,21 +291,43 @@
       "slug": "telegram-oc",
       "name": "Telegram (OpenConnector)",
       "node": "Telegram (OpenConnector)",
-      "description": "Send messages, photos and documents, and read updates and chats, as a Telegram bot connected centrally in FloMorphic → Connect (OpenConnector / oomol). Holds no Telegram bot token; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
+      "description": "Send messages, photos and documents, and read updates and chats, as a Telegram bot connected centrally in FloMorphic \u2192 Connect (OpenConnector / oomol). Holds no Telegram bot token; proxies each action over the flomorphic.svc.oc.* NATS subjects.",
       "repository": "https://github.com/mehdi-shokohi/telegram-oc-plugin",
       "entry": "plugins/telegram-oc.md",
       "author": "mehdi-shokohi",
       "sdk": "go",
       "protocol": "inflowv1",
       "version": "v0.1.0",
-      "categories": ["communication"],
+      "categories": [
+        "communication"
+      ],
       "actions": 5,
       "status": "active",
       "hostDependency": {
         "platform": "flomorphic",
         "service": "Connect / OpenConnector proxy",
-        "subjects": ["flomorphic.svc.oc.*"]
+        "subjects": [
+          "flomorphic.svc.oc.*"
+        ]
       }
+    },
+    {
+      "slug": "zvec",
+      "name": "zvec",
+      "node": "ZVEC",
+      "description": "Vector, full-text and hybrid search on the embedded zvec engine \u2014 no server to run, a collection is a directory on the plugin's own host. Fuses a vector and a full-text ranking by RRF or weights, and can embed text via OpenAI, Gemini, Cohere or a custom endpoint.",
+      "repository": "https://github.com/Inflowenger/zvec-plugin",
+      "entry": "plugins/zvec.md",
+      "author": "Inflowenger",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": [
+        "database",
+        "ai"
+      ],
+      "actions": 12,
+      "status": "beta"
     }
   ]
 }

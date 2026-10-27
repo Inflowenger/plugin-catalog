@@ -18,6 +18,7 @@ plugin's source, releases, and issues live in its author's own repository.
 | [Playwright](playwright.md) **(beta)** | `Playwright` | 5 | Node | Any host | [@Venapce](https://github.com/Venapce) | [playwright](https://github.com/Venapce/playwright) |
 | [Postgres](postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 | [Telegram (OpenConnector)](telegram-oc.md) | `Telegram (OpenConnector)` | 5 | Go | FloMorphic ★ | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [telegram-oc-plugin](https://github.com/mehdi-shokohi/telegram-oc-plugin) |
+| [zvec](zvec.md) **(beta)** | `ZVEC` | 12 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [zvec-plugin](https://github.com/Inflowenger/zvec-plugin) |
 
 [`index.json`](index.json) is the same list in machine-readable form, for tools
 that want to consume the catalog.
