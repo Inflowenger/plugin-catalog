@@ -57,6 +57,24 @@
       "status": "beta"
     },
     {
+      "slug": "duckdb",
+      "name": "DuckDB",
+      "node": "DUCKDB",
+      "description": "SQL over files: query CSV, Parquet, JSON and Excel in place \u2014 on disk, over https, or in S3-compatible object storage (MinIO, Ceph, R2) \u2014 with globs read as one table, schema discovery, bucket listing, file-to-table import and query-to-file export. DuckDB is embedded; there is no server.",
+      "repository": "https://github.com/Inflowenger/duck-plugin",
+      "entry": "plugins/duckdb.md",
+      "author": "FloMorphic",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": [
+        "database",
+        "storage"
+      ],
+      "actions": 7,
+      "status": "active"
+    },
+    {
       "slug": "github-oc",
       "name": "GitHub (OpenConnector)",
       "node": "GitHub (OpenConnector)",

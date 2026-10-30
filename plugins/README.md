@@ -7,6 +7,7 @@ plugin's source, releases, and issues live in its author's own repository.
 |--------|------|--------:|-----|---------|--------|------------|
 | [Claude Agent](claude-agent.md) | `CLAUDE AGENT` | 1 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [claude-agent-plugin](https://github.com/Inflowenger/claude-agent-plugin) |
 | [Codex Agent](codex-agent.md) **(beta)** | `CODEX AGENT` | 1 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [codex-agent-plugin](https://github.com/Inflowenger/codex-agent-plugin) |
+| [DuckDB](duckdb.md) | `DUCKDB` | 7 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [duck-plugin](https://github.com/Inflowenger/duck-plugin) |
 | [GitHub (OpenConnector)](github-oc.md) **(beta)** | `GitHub (OpenConnector)` | 13 | Python | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [github-oc](https://github.com/FloMorphic/github-oc) |
 | [Gmail (OpenConnector)](gmail-oc.md) | `Gmail (OpenConnector)` | 4 | Node | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [gmail-oc-plugin](https://github.com/FloMorphic/gmail-oc-plugin) |
 | [Google Workspace (OpenConnector)](google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
