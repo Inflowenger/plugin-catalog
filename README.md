@@ -103,23 +103,6 @@ hood: **[docs/run-a-plugin.md](docs/run-a-plugin.md)**.
 
 ---
 
-## Venapce — roadmap
-
-**[Venapce](docs/venapce.md)** is the security-posture product that drives most
-of this catalog's roadmap. Its plugins collect and investigate resources —
-hosts through **osquery → osctrl**, network devices through
-**[Scrapli](plugins/scrapli.md)**, code through
-[GitHub (OpenConnector)](plugins/github-oc.md) — and **FloMorphic** is its
-backend and dynamic layer: every feature is a workflow over the frames the
-plugins return.
-
-**[docs/venapce.md](docs/venapce.md)** covers what is already shaped, the
-outcome of each feasibility study, the plugins under study next (the three
-clouds first), and requested plugins. The wider collector plan is in
-[docs/security-collectors-plan.md](docs/security-collectors-plan.md).
-
----
-
 ## What a Plugin node is
 
 Inflowenger runs software whose logic is a **workflow graph**. The platform ships
