@@ -5,6 +5,7 @@ plugin's source, releases, and issues live in its author's own repository.
 
 | Plugin | Node | Actions | SDK | Runs on | Author | Repository |
 |--------|------|--------:|-----|---------|--------|------------|
+| [ArangoDB](arangodb.md) **(review)** | `ARANGODB` | 18 | Node | Any host | [@FloMorphic](https://github.com/FloMorphic) | [arangodb-plugin](https://github.com/Inflowenger/arangodb-plugin) |
 | [Claude Agent](claude-agent.md) | `CLAUDE AGENT` | 1 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [claude-agent-plugin](https://github.com/Inflowenger/claude-agent-plugin) |
 | [Codex Agent](codex-agent.md) **(beta)** | `CODEX AGENT` | 1 | Python | Any host | [@Inflowenger](https://github.com/Inflowenger) | [codex-agent-plugin](https://github.com/Inflowenger/codex-agent-plugin) |
 | [DuckDB](duckdb.md) | `DUCKDB` | 7 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [duck-plugin](https://github.com/Inflowenger/duck-plugin) |
@@ -13,13 +14,21 @@ plugin's source, releases, and issues live in its author's own repository.
 | [Google Workspace (OpenConnector)](google-oc.md) **(beta)** | `Google Workspace (OpenConnector)` | 30 | Go | FloMorphic ★ | [@FloMorphic](https://github.com/FloMorphic) | [google-office-oc-plugin](https://github.com/FloMorphic/google-office-oc-plugin) |
 | [Jira](jira.md) | `JIRA` | 14 | Go | Any host | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [jira-plugin](https://github.com/mehdi-shokohi/jira-plugin) |
 | [Microsoft SQL Server](mssql.md) | `MSSQL` | 4 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mssql-plugin](https://github.com/Inflowenger/mssql-plugin) |
+| [MinIO](minio.md) **(review)** | `MINIO` | 12 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [minio-plugin](https://github.com/Inflowenger/minio-plugin) |
 | [MongoDB](mongodb.md) | `MONGODB` | 4 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [mongodb-plugin](https://github.com/FloMorphic/mongodb-plugin) |
 | [MySQL](mysql.md) | `MYSQL` | 4 | Node | Any host | [@Inflowenger](https://github.com/Inflowenger) | [mysql-plugin](https://github.com/Inflowenger/mysql-plugin) |
+| [Neo4j](neo4j.md) **(review)** | `NEO4J` | 6 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [neo4j-plugin](https://github.com/Inflowenger/neo4j-plugin) |
 | [Nuclei](nuclei.md) **(beta)** | `NUCLEI` | 6 | Go | Any host | [@Venapce](https://github.com/Venapce) | [nuclei](https://github.com/Venapce/nuclei) |
 | [Playwright](playwright.md) **(beta)** | `Playwright` | 5 | Node | Any host | [@Venapce](https://github.com/Venapce) | [playwright](https://github.com/Venapce/playwright) |
+| [Redis](redis.md) **(review)** | `REDIS` | 22 | Node | Any host | [@FloMorphic](https://github.com/FloMorphic) | [redis-plugin](https://github.com/Inflowenger/redis-plugin) |
 | [Postgres](postgres.md) | `POSTGRES` | 3 | Go | Any host | [@FloMorphic](https://github.com/FloMorphic) | [postgres-plugin](https://github.com/FloMorphic/postgres-plugin) |
 | [Telegram (OpenConnector)](telegram-oc.md) | `Telegram (OpenConnector)` | 5 | Go | FloMorphic ★ | [@mehdi-shokohi](https://github.com/mehdi-shokohi) | [telegram-oc-plugin](https://github.com/mehdi-shokohi/telegram-oc-plugin) |
 | [zvec](zvec.md) **(beta)** | `ZVEC` | 12 | Go | Any host | [@Inflowenger](https://github.com/Inflowenger) | [zvec-ai-plugin](https://github.com/Inflowenger/zvec-ai-plugin) |
+
+**(review)** — listed, but not yet tested against a live Infra + Fractal. The
+action surface is complete and the entry describes it honestly; what is not
+proven is the run. Read the source, try it, and report what breaks — that is
+what moves it to `beta`.
 
 [`index.json`](index.json) is the same list in machine-readable form, for tools
 that want to consume the catalog.

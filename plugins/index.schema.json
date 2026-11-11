@@ -111,8 +111,8 @@
         },
         "status": {
           "type": "string",
-          "enum": ["active", "beta", "experimental", "unmaintained"],
-          "description": "Maintenance state as reported by the author."
+          "enum": ["active", "beta", "experimental", "review", "unmaintained"],
+          "description": "Maintenance state as reported by the author. 'review' means listed but not yet tested against a live Infra + Fractal \u2014 the action surface is there, the run is not proven."
         }
       }
     }

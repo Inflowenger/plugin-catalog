@@ -42,6 +42,14 @@ Experimental and half-finished are fine — mark `status` as `experimental` and 
 so in the entry. What is not fine is a plugin that mishandles other people's
 credentials.
 
+**Built but not yet run against a live Infra + Fractal?** List it as `review`.
+It is the one status that admits the first bullet above is not satisfied yet:
+the actions are implemented and the entry describes them honestly, but nobody
+has driven the node from a real flow. Mark the row `**(review)**` in both
+tables, say in the entry's **Status** row what is and is not proven, and move it
+to `beta` or `active` once it has run. A `review` listing is an invitation to
+read the source and try it — not a claim that it works.
+
 ### Steps
 
 1. Copy [`templates/plugin-entry.md`](templates/plugin-entry.md) to

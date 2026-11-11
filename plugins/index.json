@@ -3,6 +3,23 @@
   "version": 1,
   "plugins": [
     {
+      "slug": "arangodb",
+      "name": "ArangoDB",
+      "node": "ARANGODB",
+      "description": "ArangoDB's three faces on the canvas: AQL read, write and explain; documents read and written without AQL, with upsert in one round trip; collections and ensure-index; and graph traversals, shortest paths and edges. Holds no credentials \u2014 one profile is one database on one cluster.",
+      "repository": "https://github.com/Inflowenger/arangodb-plugin",
+      "entry": "plugins/arangodb.md",
+      "author": "FloMorphic",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": [
+        "database"
+      ],
+      "actions": 18,
+      "status": "review"
+    },
+    {
       "slug": "claude-agent",
       "name": "Claude Agent",
       "node": "CLAUDE AGENT",
@@ -166,6 +183,23 @@
       "status": "active"
     },
     {
+      "slug": "minio",
+      "name": "MinIO",
+      "node": "MINIO",
+      "description": "Buckets and objects on the canvas for MinIO and any S3-compatible store (AWS S3, Ceph, R2, Wasabi, Garage): list and inspect buckets, read, write, copy and tag objects, guarded prefix deletes with a dry run, and presigned URLs so the bytes move without the flow. MinIO's admin API is out of scope.",
+      "repository": "https://github.com/Inflowenger/minio-plugin",
+      "entry": "plugins/minio.md",
+      "author": "Inflowenger",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": [
+        "storage"
+      ],
+      "actions": 12,
+      "status": "review"
+    },
+    {
       "slug": "mongodb",
       "name": "MongoDB",
       "node": "MONGODB",
@@ -215,6 +249,23 @@
       ],
       "actions": 4,
       "status": "active"
+    },
+    {
+      "slug": "neo4j",
+      "name": "Neo4j",
+      "node": "NEO4J",
+      "description": "A graph database on the canvas over Bolt: read and write Cypher in managed transactions, plus upsert-a-node, link-two-nodes, find-nodes and create-a-constraint-if-not-exists without writing any. Community or Enterprise, 4.4+ and Aura.",
+      "repository": "https://github.com/Inflowenger/neo4j-plugin",
+      "entry": "plugins/neo4j.md",
+      "author": "Inflowenger",
+      "sdk": "go",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": [
+        "database"
+      ],
+      "actions": 6,
+      "status": "review"
     },
     {
       "slug": "nuclei",
@@ -286,6 +337,23 @@
       ],
       "actions": 7,
       "status": "active"
+    },
+    {
+      "slug": "redis",
+      "name": "Redis",
+      "node": "REDIS",
+      "description": "The Redis (and Valkey) data types on the canvas \u2014 keys and counters, hashes, lists as queues, sets, sorted sets, streams with consumer groups, pub/sub publish \u2014 plus a raw-command node and a parsed INFO. SCAN-only listing; no SUBSCRIBE or MONITOR, and no cluster yet.",
+      "repository": "https://github.com/Inflowenger/redis-plugin",
+      "entry": "plugins/redis.md",
+      "author": "FloMorphic",
+      "sdk": "node",
+      "protocol": "inflowv1",
+      "version": "v0.1.0",
+      "categories": [
+        "database"
+      ],
+      "actions": 22,
+      "status": "review"
     },
     {
       "slug": "scrapli",
